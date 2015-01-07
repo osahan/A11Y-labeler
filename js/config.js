@@ -4,9 +4,23 @@
  * @version 1.0.0
  */
 
-var options = {
-    role: true,
-    label: true
-};
+    var config  = function(options){
 
-$("a").anchor(options);
+        aria.anchor(options);
+
+    };
+
+
+
+    $.fn.aria = function( options ){
+        
+        var  defaults = {
+            
+        },
+        settings = $.extend( {}, defaults, options );
+
+        config( settings );
+
+        return this;
+
+    };

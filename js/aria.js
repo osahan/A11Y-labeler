@@ -4,12 +4,11 @@
  * @version 1.0.0
  */
 
-/*
 var aria = window.aria || {};
+
 aria.version = '1.0.0';
+
 aria.options = {
     role: true,
     label: true
 };
-*/
-
