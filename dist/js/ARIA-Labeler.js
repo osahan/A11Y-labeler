@@ -4,15 +4,14 @@
  * @version 1.0.0
  */
 
-/*
 var aria = window.aria || {};
+
 aria.version = '1.0.0';
+
 aria.options = {
     role: true,
     label: true
 };
-*/
-
 
 /**
  * @fileOverview anchor.js traverse throught DOM and assign ARIA labels to all anchors.
@@ -23,58 +22,95 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    $.fn.anchor = function( options ){
-
-        var  defaults = {
-            
-        };
+    aria.anchor = function(options){
 
 
-        var settings = $.extend( {}, defaults, options ),
-            regx = /(^#|#$)/;
+        var ele = $("a"),
+            regx = /(^#|#$)/,
+            labeller = {
 
-        return this.each(function(i, ele){
+                init: function(){
 
-            if(settings.role){
-                defineRole(ele);
-            }
-            
-            if(settings.label){
-                setLabels(ele);
-            }
+                    this.setOptions();
 
-        });
+                    if(options.role){
 
-        function defineRole(ele){
-            var $ele = $(ele),
-                href = $ele.prop("href"),
-                role = $ele.prop("role");
+                        this.defineRole();
 
-            if( regx.test(href) && typeof role === "undefined"){
-                $ele.attr("role", "button");
-            }
-            else if( !regx.test(href) && typeof role === "undefined"){
-                $ele.attr("role", "link");
-            }
-        }
+                    }
 
-        
-        function setLabels(ele){
-            
-        }
+                    if(options.label){
+
+                        this.assignLabels();
+
+                    }
+
+                },
+
+                setOptions: function(){
+
+                    options.role = options.role || aria.options.role;
+                    options.label = options.label || aria.options.label;
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function( index, value ) {
+
+                        if( regx.test($(value).prop("href")) && typeof $(value).prop("role") === "undefined"){
+
+                            $(value).attr("role", "button");
+
+                        }
+                        else if( !regx.test($(value).prop("href")) && typeof $(value).prop("role") === "undefined"){
+
+                            $(value).attr("role", "link");
+
+                        }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeller.init();
+
     };
 
 })(this, jQuery);
-
 /**
  * @fileOverview This is the Config file for ARIA-labeller, where we call all the plugins.
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
  */
 
-var options = {
-    role: true,
-    label: true
-};
+    var config  = function(options){
 
-$("a").anchor(options);
+        aria.anchor(options);
+
+    };
+
+
+
+    $.fn.aria = function( options ){
+        
+        var  defaults = {
+            
+        },
+        settings = $.extend( {}, defaults, options );
+
+        config( settings );
+
+        return this;
+
+    };
