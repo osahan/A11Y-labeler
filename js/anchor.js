@@ -7,71 +7,45 @@
 
 (function(window, $, undefined){
 
-    aria.anchor = function(options){
+    $.fn.anchor = function( options ){
+
+        var  defaults = {
+            
+        };
 
 
-        var ele = $("a"),
-            regx = /(^#|#$)/,
-            labeller = {
+        var settings = $.extend( {}, defaults, options ),
+            regx = /(^#|#$)/;
 
-                init: function(){
+        return this.each(function(i, ele){
 
-                    this.setOptions();
+            if(settings.role){
+                defineRole(ele);
+            }
+            
+            if(settings.label){
+                setLabels(ele);
+            }
 
-                    if(options.role){
+        });
 
-                        this.defineRole();
+        function defineRole(ele){
+            var $ele = $(ele),
+                href = $ele.prop("href"),
+                role = $ele.prop("role");
 
-                    }
+            if( regx.test(href) && typeof role === "undefined"){
+                $ele.attr("role", "button");
+            }
+            else if( !regx.test(href) && typeof role === "undefined"){
+                $ele.attr("role", "link");
+            }
+        }
 
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
-
-                },
-
-                defineRole: function(){
-
-                    $.each(ele, function( index, value ) {
-
-                        if( regx.test($(value).prop("href")) && typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "button");
-
-                        }
-                        else if( !regx.test($(value).prop("href")) && typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "link");
-
-                        }
-
-                    });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
-
-                }
-            };
-
-        labeller.init();
-
+        
+        function setLabels(ele){
+            
+        }
     };
 
 })(this, jQuery);
-
-aria.anchor();
