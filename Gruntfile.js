@@ -26,6 +26,7 @@ module.exports = function(grunt) {
         src: [
           'js/aria.js',
           'js/anchor.js',
+          'js/config.js' // this needs to be the last item in this list
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
