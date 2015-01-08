@@ -60,45 +60,12 @@
   </pre>
 
 
-<!-- Anhor Block -->
-  <h2>Anchor</h2>
-
-<div class="exampleContainer">
-  <div class="example">
-      <p>
-        <code>a</code> element with a <code>href</code>
-        <br />
-        <code>a</code> element with hash as a <code>href</code>
-        <br />
-        <code>a</code> element without <code>href</code> <code class="comment"> // no role will be assigned</code>
-      </p>
-
-      <div class="exampleMarkup">
-<a href="http://www.example.com">a element with a href</a>
-
-<a href="#">a element with hash as a href</a>
-
-<a>a element without href</a>
-
-      </div>
-  </div>
-  
-  <div class="markup highlight">
-        <pre class="prettyprint"><code class="raw"></code></pre>
-  </div>
-  
-  <div class="exampleResults"></div>
-  <div class="markup highlight">
-        <pre class="prettyprint"><code class="result"></code></pre>
-  </div>
-
-</div>
-<!-- Anhor Block End -->
-
-
+<div id="pageExamples"></div>
 
 
 </div>
+
+
 
 
 
@@ -115,11 +82,50 @@ Licensed under
 <script src="js/prettify.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 <script src="/dist/js/Aria-Labeler.min.js"></script>
 
 <script src="//localhost:35729/livereload.js"></script>
 
+
+<script type="text/mustache" id="template">
+  {{#dataList}}
+    <h2>{{title}}</h2>
+    <div class="exampleContainer">
+      <div class="example">
+          <p>{{{visbileMarkup}}}</p>
+          <div class="exampleMarkup">{{{exampleMarkup}}}</div>
+      </div>
+      <div class="markup highlight">
+            <pre class="prettyprint"><code class="raw"></code></pre>
+      </div>
+      <div class="exampleResults"></div>
+      <div class="markup highlight">
+            <pre class="prettyprint"><code class="result"></code></pre>
+      </div>
+    </div>
+  {{/dataList}}
+</script>
+
+
 <script type="text/javascript">
+
+  var jsonData = {
+
+    "dataList": [
+      {
+        "title": "Anchor",
+        "visbileMarkup": "<code>a</code> element with a <code>href</code><br /><code>a</code> element with hash as a <code>href</code><br /><code>a</code> element without <code>href</code> <code class=\"comment\"> // no role will be assigned</code>",
+        "exampleMarkup": "<a href=\"http://www.example.com\">a element with a href</a>\n\n<a href=\"#\">a element with hash as a href</a>\n\n<a>a element without href</a>"
+      }     
+    ]
+  };
+
+  var template = $('#template').html();
+      Mustache.parse(template),
+      output = Mustache.render(template, jsonData);
+  
+  $("#pageExamples").html(output);
 
   $(".exampleContainer").each(function(){
       var $this = $(this),
