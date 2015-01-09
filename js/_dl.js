@@ -10,7 +10,7 @@
     aria._dl = function(options){
 
 
-        var ele = $("dl"),
+        var ele = aria.currentSelector.find("dl"),
             labeller = {
 
                 init: function(){
