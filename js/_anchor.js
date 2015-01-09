@@ -9,8 +9,7 @@
 
     aria._anchor = function(options){
 
-
-        var ele = $("a"),
+        var ele = aria.currentSelector.find("a"),
             regx = /(^#|#$)/,
             labeller = {
 
