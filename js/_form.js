@@ -10,7 +10,7 @@
     aria._form = function(options){
 
 
-        var ele = $("form"),
+        var ele = aria.currentSelector.find("form"),
             labeller = {
 
                 init: function(){
