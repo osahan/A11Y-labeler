@@ -1,0 +1,30 @@
+{
+
+    "dataList": [
+      {
+        "title": "Anchor",
+        "visbileMarkup": "<code>a</code> element with a <code>href</code><br /><code>a</code> element with hash as a <code>href</code><br /><code>a</code> element without <code>href</code> <code class=\"comment\"> // no role will be assigned</code>",
+        "exampleMarkup": "<a href=\"http://www.example.com\">a element with a href</a>\n\n<a href=\"#\">a element with hash as a href</a>\n\n<a>a element without href</a>"
+      },
+      {
+        "title": "Article",
+        "visbileMarkup": "<code>article</code> element will get Roles: article, presentation, document, application, or main.",
+        "exampleMarkup": "<article>This is a test artile</article>"
+      },
+      {
+        "title": "Aside",
+        "visbileMarkup": "<code>aside</code> element will get Roles: complementary, note or search.",
+        "exampleMarkup": "<aside>This is a test aside note</aside>"
+      },
+      {
+        "title": "Body ***",
+        "visbileMarkup": "<code>body</code> element will get Roles: document.",
+        "exampleMarkup": "<body>This is a test body :)</body>"
+      },
+      {
+        "title": "Button",
+        "visbileMarkup": "<code>button</code> element will get Roles: button, link, menuitem, menuitemcheckbox, menuitemradio or radio.",
+        "exampleMarkup": "<button>This is a test aside note</button>"
+      }
+    ]
+}   
