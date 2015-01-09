@@ -24,8 +24,7 @@ aria.options = {
 
     aria._anchor = function(options){
 
-
-        var ele = $("a"),
+        var ele = aria.currentSelector.find("a"),
             regx = /(^#|#$)/,
             labeller = {
 
@@ -97,79 +96,10 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._area = function(options){
-
-
-        var ele = $("area"),
-            labeller = {
-
-                init: function(){
-
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
-
-                },
-
-                defineRole: function(){
-
-                    $.each(ele, function( index, value ) {
-
-                        if( $(value).prop("href") && typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "link");
-
-                        }
-
-                    });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
-
-                }
-            };
-
-        labeller.init();
-
-    };
-
-})(this, jQuery);
-/**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
- *
- * @author Gagandeep Singh <robi_osahan@yahoo.com>
- * @version 1.0.0
- */
-
-(function(window, $, undefined){
-
     aria._article = function(options){
 
 
-        var ele = $("article"),
+        var ele = aria.currentSelector.find("article"),
             labeller = {
 
                 init: function(){
@@ -238,7 +168,7 @@ aria.options = {
     aria._aside = function(options){
 
 
-        var ele = $("aside"),
+        var ele = aria.currentSelector.find("aside"),
             labeller = {
 
                 init: function(){
@@ -307,7 +237,7 @@ aria.options = {
     aria._body = function(options){
 
 
-        var ele = $("body"),
+        var ele = aria.currentSelector.find("body"),
             labeller = {
 
                 init: function(){
@@ -376,7 +306,7 @@ aria.options = {
     aria._button = function(options){
 
 
-        var ele = $("button"),
+        var ele = aria.currentSelector.find("button"),
             labeller = {
 
                 init: function(){
@@ -445,7 +375,7 @@ aria.options = {
     aria._datalist = function(options){
 
 
-        var ele = $("datalist"),
+        var ele = aria.currentSelector.find("datalist"),
             labeller = {
 
                 init: function(){
@@ -514,7 +444,7 @@ aria.options = {
     aria._details = function(options){
 
 
-        var ele = $("details"),
+        var ele = aria.currentSelector.find("details"),
             labeller = {
 
                 init: function(){
@@ -583,7 +513,7 @@ aria.options = {
     aria._dl = function(options){
 
 
-        var ele = $("dl"),
+        var ele = aria.currentSelector.find("dl"),
             labeller = {
 
                 init: function(){
@@ -652,7 +582,7 @@ aria.options = {
     aria._form = function(options){
 
 
-        var ele = $("form"),
+        var ele = aria.currentSelector.find("form"),
             labeller = {
 
                 init: function(){
@@ -721,7 +651,7 @@ aria.options = {
     aria._h1 = function(options){
 
 
-        var ele = $("h1"),
+        var ele = aria.currentSelector.find("h1"),
             labeller = {
 
                 init: function(){
@@ -790,7 +720,7 @@ aria.options = {
     aria._h2 = function(options){
 
 
-        var ele = $("h2"),
+        var ele = aria.currentSelector.find("h2"),
             labeller = {
 
                 init: function(){
@@ -859,7 +789,7 @@ aria.options = {
     aria._h3 = function(options){
 
 
-        var ele = $("h3"),
+        var ele = aria.currentSelector.find("h3"),
             labeller = {
 
                 init: function(){
@@ -928,7 +858,7 @@ aria.options = {
     aria._h4 = function(options){
 
 
-        var ele = $("h4"),
+        var ele = aria.currentSelector.find("h4"),
             labeller = {
 
                 init: function(){
@@ -997,7 +927,7 @@ aria.options = {
     aria._h5 = function(options){
 
 
-        var ele = $("h5"),
+        var ele = aria.currentSelector.find("h5"),
             labeller = {
 
                 init: function(){
@@ -1066,7 +996,7 @@ aria.options = {
     aria._h6 = function(options){
 
 
-        var ele = $("h6"),
+        var ele = aria.currentSelector.find("h6"),
             labeller = {
 
                 init: function(){
@@ -1135,7 +1065,7 @@ aria.options = {
     aria._hr = function(options){
 
 
-        var ele = $("hr"),
+        var ele = aria.currentSelector.find("hr"),
             labeller = {
 
                 init: function(){
@@ -1204,7 +1134,7 @@ aria.options = {
     aria._img = function(options){
 
 
-        var ele = $("img"),
+        var ele = aria.currentSelector.find("img"),
             labeller = {
 
                 init: function(){
@@ -1279,7 +1209,7 @@ aria.options = {
     aria._input = function(options){
 
 
-        var ele = $("input"),
+        var ele = aria.currentSelector.find("input"),
             labeller = {
 
                 init: function(){
@@ -1353,7 +1283,7 @@ console.log( this );
     var config  = function(options){
 
         aria._anchor(options);
-        aria._area(options);
+        // aria._area(options);
         aria._article(options);
         aria._aside(options);
         aria._body(options);
@@ -1372,12 +1302,15 @@ console.log( this );
         aria._img(options);
         aria._input(options);
 
+
     };
 
 
 
     $.fn.aria = function( options ){
-        
+       
+        aria.currentSelector = this;
+
         var  defaults = {
             
         },
