@@ -10,7 +10,7 @@
     aria._aside = function(options){
 
 
-        var ele = $("aside"),
+        var ele = aria.currentSelector.find("aside"),
             labeller = {
 
                 init: function(){
