@@ -10,7 +10,7 @@
     aria._img = function(options){
 
 
-        var ele = $("img"),
+        var ele = aria.currentSelector.find("img"),
             labeller = {
 
                 init: function(){
