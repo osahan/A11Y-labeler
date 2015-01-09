@@ -7,7 +7,7 @@
     var config  = function(options){
 
         aria._anchor(options);
-        aria._area(options);
+        // aria._area(options);
         aria._article(options);
         aria._aside(options);
         aria._body(options);
@@ -26,12 +26,15 @@
         aria._img(options);
         aria._input(options);
 
+
     };
 
 
 
     $.fn.aria = function( options ){
-        
+       
+        aria.currentSelector = this;
+
         var  defaults = {
             
         },
