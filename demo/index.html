@@ -83,7 +83,7 @@ Licensed under
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
-<script src="/dist/js/Aria-Labeler.min.js"></script>
+<script src="/dist/js/Aria-Labeler.js"></script>
 
 <script src="//localhost:35729/livereload.js"></script>
 
@@ -110,34 +110,31 @@ Licensed under
 
 <script type="text/javascript">
 
-  var jsonData = {
+    $(function() {
+      $.getJSON('demodata.json', function(data){
 
-    "dataList": [
-      {
-        "title": "Anchor",
-        "visbileMarkup": "<code>a</code> element with a <code>href</code><br /><code>a</code> element with hash as a <code>href</code><br /><code>a</code> element without <code>href</code> <code class=\"comment\"> // no role will be assigned</code>",
-        "exampleMarkup": "<a href=\"http://www.example.com\">a element with a href</a>\n\n<a href=\"#\">a element with hash as a href</a>\n\n<a>a element without href</a>"
-      }     
-    ]
-  };
+          var template = $('#template').html();
+              Mustache.parse(template),
+              output = Mustache.render(template, data);
 
-  var template = $('#template').html();
-      Mustache.parse(template),
-      output = Mustache.render(template, jsonData);
-  
-  $("#pageExamples").html(output);
+          $("#pageExamples").html(output);
 
-  $(".exampleContainer").each(function(){
-      var $this = $(this),
-          example = $this.find(".exampleMarkup"),
-          raw = $this.find(".raw"),
-          result = $this.find(".result");
-          
-          raw.text(example.prop('innerHTML'))        
-          $this.aria();
-          result.text(example.prop('innerHTML'))        
-          
-  });
+      })
+      .complete(function(){
+
+        $(".exampleContainer").each(function(){
+            var $this = $(this),
+                example = $this.find(".exampleMarkup"),
+                raw = $this.find(".raw"),
+                result = $this.find(".result");
+                raw.text(example.prop('innerHTML'))        
+                $this.aria();
+                result.text(example.prop('innerHTML'));          
+        });
+
+    });
+
+    });
 
 </script>
 
