@@ -10,7 +10,7 @@
     aria._datalist = function(options){
 
 
-        var ele = $("datalist"),
+        var ele = aria.currentSelector.find("datalist"),
             labeller = {
 
                 init: function(){
