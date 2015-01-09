@@ -10,7 +10,7 @@
     aria._h3 = function(options){
 
 
-        var ele = $("h3"),
+        var ele = aria.currentSelector.find("h3"),
             labeller = {
 
                 init: function(){
