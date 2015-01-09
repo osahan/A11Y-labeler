@@ -10,7 +10,7 @@
     aria._input = function(options){
 
 
-        var ele = $("input"),
+        var ele = aria.currentSelector.find("input"),
             labeller = {
 
                 init: function(){
