@@ -10,7 +10,7 @@
     aria._hr = function(options){
 
 
-        var ele = $("hr"),
+        var ele = aria.currentSelector.find("hr"),
             labeller = {
 
                 init: function(){
