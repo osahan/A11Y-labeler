@@ -10,7 +10,7 @@
     aria._body = function(options){
 
 
-        var ele = $("body"),
+        var ele = aria.currentSelector.find("body"),
             labeller = {
 
                 init: function(){
