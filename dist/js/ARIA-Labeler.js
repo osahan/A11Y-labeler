@@ -13,6 +13,22 @@ aria.options = {
     label: true
 };
 
+aria.hiddenElements = [];
+
+aria.setOptions = function(options){
+    options.role = options.role || aria.options.role;
+    options.label = options.label || aria.options.label;
+    return options;
+};
+
+aria.isHidden = function(ele){
+
+    if( ele.css("display") === "none" ){
+        this.hiddenElements.push(ele);
+    }
+
+};
+
 /**
  * @fileOverview anchor.js traverse throught DOM and assign ARIA labels to all anchors.
  *
@@ -25,48 +41,33 @@ aria.options = {
     aria._anchor = function(options){
 
         var ele = aria.currentSelector.find("a"),
-            regx = /(^#|#$)/,
-            labeller = {
+            regex = /(^#|#$)/,
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
                 defineRole: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function(  ) {
 
-                        if( $(value).prop("href") && regx.test($(value).prop("href")) && typeof $(value).prop("role") === "undefined"){
+                        var $this = $(this),
+                            href = $this.prop("href"),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "button");
+                            self.isHidden( $this );
 
-                        }
-                        else if( $(value).prop("href") && !regx.test($(value).prop("href")) && typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "link");
-
-                        }
+                             if(href && regex.test(href) && typeof role === "undefined"){
+                                $this.attr("role", "button");
+                             }  
+                             else if(href && !regex.test(href) && typeof role === "undefined"){
+                                $this.attr("role", "link");
+                             }  
 
                     });
 
@@ -82,13 +83,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _article.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -96,27 +97,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._article = function(options){
+    aria._article = function(){
 
 
         var ele = aria.currentSelector.find("article"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -151,13 +142,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _aside.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -165,34 +156,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._aside = function(options){
+    aria._aside = function(){
 
 
         var ele = aria.currentSelector.find("aside"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -220,13 +194,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _body.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -234,34 +208,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._body = function(options){
+    aria._body = function(){
 
 
         var ele = aria.currentSelector.find("body"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -289,13 +246,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _button.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -303,34 +260,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._button = function(options){
+    aria._button = function(){
 
 
         var ele = aria.currentSelector.find("button"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -358,13 +298,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _datalist.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -372,34 +312,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._datalist = function(options){
+    aria._datalist = function(){
 
 
         var ele = aria.currentSelector.find("datalist"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -427,13 +350,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _details.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -441,27 +364,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._details = function(options){
+    aria._details = function(){
 
 
         var ele = aria.currentSelector.find("details"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -496,13 +409,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _dl.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -510,34 +423,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._dl = function(options){
+    aria._dl = function(){
 
 
         var ele = aria.currentSelector.find("dl"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -565,13 +461,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _form.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -583,30 +479,13 @@ aria.options = {
 
 
         var ele = aria.currentSelector.find("form"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -634,13 +513,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h1.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -648,34 +527,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._h1 = function(options){
+    aria._h1 = function(){
 
 
         var ele = aria.currentSelector.find("h1"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -703,13 +565,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h2.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -721,30 +583,13 @@ aria.options = {
 
 
         var ele = aria.currentSelector.find("h2"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -772,13 +617,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h3.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -786,35 +631,15 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._h3 = function(options){
+    aria._h3 = function(){
 
 
         var ele = aria.currentSelector.find("h3"),
-            labeller = {
+            labeler = {
 
                 init: function(){
-
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
-
+                    this.defineRole();
+                    this.assignLabels();
                 },
 
                 defineRole: function(){
@@ -841,13 +666,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h4.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -855,34 +680,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._h4 = function(options){
+    aria._h4 = function(){
 
 
         var ele = aria.currentSelector.find("h4"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -910,13 +718,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h5.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -924,34 +732,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._h5 = function(options){
+    aria._h5 = function(){
 
 
         var ele = aria.currentSelector.find("h5"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -979,7 +770,7 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
@@ -993,35 +784,16 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._h6 = function(options){
+    aria._h6 = function(){
 
 
         var ele = aria.currentSelector.find("h6"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
-
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
-
+                    this.defineRole();
+                    this.assignLabels();
                 },
 
                 defineRole: function(){
@@ -1048,13 +820,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _hr.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1062,34 +834,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._hr = function(options){
+    aria._hr = function(){
 
 
         var ele = aria.currentSelector.find("hr"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -1117,13 +872,13 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _img.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1131,34 +886,17 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._img = function(options){
+    aria._img = function(){
 
 
         var ele = aria.currentSelector.find("img"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -1192,7 +930,7 @@ aria.options = {
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
@@ -1206,34 +944,16 @@ aria.options = {
 
 (function(window, $, undefined){
 
-    aria._input = function(options){
+    aria._input = function(){
 
 
         var ele = aria.currentSelector.find("input"),
-            labeller = {
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -1269,7 +989,7 @@ console.log( this );
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
@@ -1282,25 +1002,25 @@ console.log( this );
 
     var config  = function(options){
 
-        aria._anchor(options);
+        aria._anchor();
         // aria._area(options);
-        aria._article(options);
-        aria._aside(options);
-        aria._body(options);
-        aria._button(options);
-        aria._datalist(options);
-        aria._details(options);
-        aria._dl(options);
-        aria._form(options);
-        aria._h1(options);
-        aria._h2(options);
-        aria._h3(options);
-        aria._h4(options);
-        aria._h5(options);
-        aria._h6(options);
-        aria._hr(options);
-        aria._img(options);
-        aria._input(options);
+        aria._article();
+        aria._aside();
+        aria._body();
+        aria._button();
+        aria._datalist();
+        aria._details();
+        aria._dl();
+        aria._form();
+        aria._h1();
+        aria._h2();
+        aria._h3();
+        aria._h4();
+        aria._h5();
+        aria._h6();
+        aria._hr();
+        aria._img();
+        aria._input();
 
 
     };
