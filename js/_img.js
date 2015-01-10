@@ -1,5 +1,5 @@
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _img.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,34 +7,17 @@
 
 (function(window, $, undefined){
 
-    aria._img = function(options){
+    aria._img = function(){
 
 
         var ele = aria.currentSelector.find("img"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -68,7 +51,7 @@
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 

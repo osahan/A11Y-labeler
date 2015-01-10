@@ -7,35 +7,16 @@
 
 (function(window, $, undefined){
 
-    aria._h6 = function(options){
+    aria._h6 = function(){
 
 
         var ele = aria.currentSelector.find("h6"),
-            labeller = {
+            self = this,
+            labeler = {
 
                 init: function(){
-
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
-
+                    this.defineRole();
+                    this.assignLabels();
                 },
 
                 defineRole: function(){
@@ -62,7 +43,7 @@
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 

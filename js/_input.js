@@ -7,34 +7,16 @@
 
 (function(window, $, undefined){
 
-    aria._input = function(options){
+    aria._input = function(){
 
 
         var ele = aria.currentSelector.find("input"),
-            labeller = {
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
@@ -70,7 +52,7 @@ console.log( this );
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
