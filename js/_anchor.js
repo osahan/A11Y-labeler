@@ -10,48 +10,33 @@
     aria._anchor = function(options){
 
         var ele = aria.currentSelector.find("a"),
-            regx = /(^#|#$)/,
-            labeller = {
+            regex = /(^#|#$)/,
+            self = this,
+            labeler = {
 
                 init: function(){
 
-                    this.setOptions();
-
-                    if(options.role){
-
-                        this.defineRole();
-
-                    }
-
-                    if(options.label){
-
-                        this.assignLabels();
-
-                    }
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    this.defineRole();
+                    this.assignLabels();
 
                 },
 
                 defineRole: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function(  ) {
 
-                        if( $(value).prop("href") && regx.test($(value).prop("href")) && typeof $(value).prop("role") === "undefined"){
+                        var $this = $(this),
+                            href = $this.prop("href"),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "button");
+                            self.isHidden( $this );
 
-                        }
-                        else if( $(value).prop("href") && !regx.test($(value).prop("href")) && typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "link");
-
-                        }
+                             if(href && regex.test(href) && typeof role === "undefined"){
+                                $this.attr("role", "button");
+                             }  
+                             else if(href && !regex.test(href) && typeof role === "undefined"){
+                                $this.attr("role", "link");
+                             }  
 
                     });
 
@@ -67,7 +52,7 @@
                 }
             };
 
-        labeller.init();
+        labeler.init();
 
     };
 
