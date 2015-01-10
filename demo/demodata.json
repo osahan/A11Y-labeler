@@ -4,7 +4,7 @@
       {
         "title": "Anchor",
         "visbileMarkup": "<code>a</code> element with a <code>href</code><br /><code>a</code> element with hash as a <code>href</code><br /><code>a</code> element without <code>href</code> <code class=\"comment\"> // no role will be assigned</code>",
-        "exampleMarkup": "<a href=\"http://www.example.com\">a element with a href</a>\n\n<a href=\"#\">a element with hash as a href</a>\n\n<a>a element without href</a>"
+        "exampleMarkup": "<a href=\"http://www.example.com\" role=\"link\">a element with pre-defined role</a>\n\n <a href=\"http://www.example.com\">a element with a href</a>\n\n<a href=\"#\">a element with hash as a href</a>\n\n<a>a element without href</a>"
       },
       {
         "title": "Article",
