@@ -12,3 +12,19 @@ aria.options = {
     role: true,
     label: true
 };
+
+aria.hiddenElements = [];
+
+aria.setOptions = function(options){
+    options.role = options.role || aria.options.role;
+    options.label = options.label || aria.options.label;
+    return options;
+};
+
+aria.isHidden = function(ele){
+
+    if( ele.css("display") === "none" ){
+        this.hiddenElements.push(ele);
+    }
+
+};
