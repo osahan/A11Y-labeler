@@ -132,7 +132,7 @@ module.exports = function(grunt) {
     },
 
     connect: {
-      server1: {
+      server: {
         options: {
             hostname: 'localhost',
             port: 8083,
@@ -159,7 +159,7 @@ grunt.loadNpmTasks('grunt-contrib-less');
 grunt.registerTask('default', ['clean', 'jshint', 'less', 'csslint', 'cssmin', 'concat', 'uglify']);
 
 
-grunt.registerTask('dev',['connect:server1']);
+grunt.registerTask('dev',['connect:server']);
 
 
 };
