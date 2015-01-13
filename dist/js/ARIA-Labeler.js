@@ -30,6 +30,70 @@ aria.isHidden = function(ele){
 };
 
 /**
+ * @fileOverview This is the Config file for ARIA-labeller, where we call all the plugins.
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+    var config  = function(options){
+
+        aria._anchor();
+        // aria._area(options);
+        aria._article();
+        aria._aside();
+        aria._body();
+        aria._button();
+        aria._datalist();
+        aria._details();
+        aria._dialog();
+        aria._dl();
+        aria._form();
+        aria._h1();
+        aria._h2();
+        aria._h3();
+        aria._h4();
+        aria._h5();
+        aria._h6();
+        aria._hr();
+        aria._img();
+        aria._input();
+        aria._li();
+        aria._link();
+        aria._main();
+        aria._menu();
+        aria._menuitem();
+        aria._meter();
+        aria._nav();
+        aria._ol();
+        aria._option();
+        aria._output();
+        aria._section();
+        aria._select();
+        aria._tbody();
+        aria._textarea();
+        aria._tfoot();
+        aria._thead();
+        aria._ul();
+
+    };
+
+
+
+    $.fn.aria = function( options ){
+       
+        aria.currentSelector = this;
+
+        var  defaults = {
+            
+        },
+        settings = $.extend( {}, defaults, options );
+
+        config( settings );
+
+        return this;
+
+    };
+/**
  * @fileOverview anchor.js traverse throught DOM and assign ARIA labels to all anchors.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
@@ -47,8 +111,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -64,10 +130,10 @@ aria.isHidden = function(ele){
 
                              if(href && regex.test(href) && typeof role === "undefined"){
                                 $this.attr("role", "button");
-                             }  
+                             }
                              else if(href && !regex.test(href) && typeof role === "undefined"){
                                 $this.attr("role", "link");
-                             }  
+                             }
 
                     });
 
@@ -106,15 +172,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -165,8 +226,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -217,8 +280,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -269,8 +334,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -321,8 +388,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -373,8 +442,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -415,6 +486,68 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
+ * @fileOverview _dialog.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._dialog = function(){
+
+        var ele = aria.currentSelector.find("dialog"),
+            self = this,
+            labeler = {
+
+                init: function(){
+            
+                    if(ele.length > 0 ){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                setOptions: function(){
+
+                    options.role = options.role || aria.options.role;
+                    options.label = options.label || aria.options.label;
+
+                },
+
+                defineRole: function(){
+                    $.each(ele, function() {
+
+                    var $this = $(this),
+                        role = $this.prop("role");
+
+                        if( typeof role === "undefined" ){
+
+                            $(value).attr("role", "dialog");
+
+                        }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+    };
+
+})(this, jQuery);
+
+/**
  * @fileOverview _dl.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
@@ -432,9 +565,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
-
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
                 },
 
                 defineRole: function(){
@@ -484,8 +618,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -536,8 +672,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -588,8 +726,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -638,8 +778,12 @@ aria.isHidden = function(ele){
             labeler = {
 
                 init: function(){
-                    this.defineRole();
-                    this.assignLabels();
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
                 },
 
                 defineRole: function(){
@@ -689,8 +833,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -741,8 +887,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -843,8 +991,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -895,8 +1045,10 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -914,8 +1066,26 @@ aria.isHidden = function(ele){
                             $(value).attr("role", "presentation");
 
                         }
+                        else if( ($(value).prop("type") === "button" || $(value).prop("type") === "reset" || $(value).prop("type") === "submit" || $(value).prop("type") === "image") && typeof $(value).prop("role") === "undefined"){
 
+                            $(value).attr("role", "button");
 
+                        }
+                        else if( ( $(value).prop("type") === "email" || $(value).prop("type") === "password" ) && typeof $(value).prop("role") === "undefined"){
+
+                            $(value).attr("role", "textbox");
+
+                        }
+                        else if($(value).prop("type") === "radio" && typeof $(value).prop("role") === "undefined"){
+
+                            $(value).attr("role", "radio");
+
+                        }
+                        else if($(value).prop("type") === "range" && typeof $(value).prop("role") === "undefined"){
+
+                            $(value).attr("role", "slider");
+
+                        }
                     });
 
                 },
@@ -952,28 +1122,66 @@ aria.isHidden = function(ele){
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
                 defineRole: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            eleType = $this.prop("type"),
+                            role = $this.prop("role"),
+                            listAttr = $(this).prop("list"),
+                            roleType;
 
 
-console.log( this );
-                        // if( $(value).prop("alt") && typeof $(value).prop("role") === "undefined"){
+                        switch (eleType) {
+                            case button:
+                                roleType = "button";
+                                break;
+                            case email:
+                                roleType = (listAttr) ? "combobox" : "textbox";
+                                break;
+                            case image:
+                                roleType = "button";
+                                break;
+                            case password:
+                                roleType = "textbox";
+                                break;
+                            case radio:
+                                roleType = "radio";
+                                break;
+                            case range:
+                                roleType = "slider";
+                                break;
+                            case reset:
+                                roleType = "button";
+                                break;
+                            case submit:
+                                roleType = "button";
+                                break;
+                            case tel:
+                                roleType = (listAttr) ? "combobox" : "textbox";
+                                break;
+                            case text:
+                                roleType = (listAttr) ? "combobox" : "textbox";
+                                break;
+                            case search:
+                                roleType = (listAttr) ? "combobox" : "textbox";
+                                break;
+                            case url:
+                                roleType = (listAttr) ? "combobox" : "textbox";
+                                break;
 
-                        //     $(value).attr("role", "img");
 
-                        // }
-                        // else if( !$(value).prop("alt") && typeof $(value).prop("role") === "undefined"){
+                        }
 
-                        //     $(value).attr("role", "presentation");
-
-                        // }
-
+                        $(this).attr("role", roleType);
 
                     });
 
@@ -995,49 +1203,994 @@ console.log( this );
 
 })(this, jQuery);
 /**
- * @fileOverview This is the Config file for ARIA-labeller, where we call all the plugins.
+ * @fileOverview _li.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
  */
 
-    var config  = function(options){
+(function(window, $, undefined){
 
-        aria._anchor();
-        // aria._area(options);
-        aria._article();
-        aria._aside();
-        aria._body();
-        aria._button();
-        aria._datalist();
-        aria._details();
-        aria._dl();
-        aria._form();
-        aria._h1();
-        aria._h2();
-        aria._h3();
-        aria._h4();
-        aria._h5();
-        aria._h6();
-        aria._hr();
-        aria._img();
-        aria._input();
+    aria._li = function(){
 
+
+        var ele = aria.currentSelector.find("li"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role"),
+                            ul = $this.closest('ul'),
+                            ol = $this.closest('ol');
+
+                        if( ( ul.length > 0 || ol.length > 0 ) && typeof role === "undefined"){
+
+                            $this.attr("role", "listitem");
+
+                        }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
 
     };
 
+})(this, jQuery);
+/**
+ * @fileOverview _link.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._link = function(options){
+
+        var ele = aria.currentSelector.find("link"),
+            // regex = /(^#|#$)/,
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            href = $this.prop("href"),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
 
 
-    $.fn.aria = function( options ){
-       
-        aria.currentSelector = this;
+                         if(href && typeof role === "undefined"){
+                            $this.attr("role", "link");
+                         }
 
-        var  defaults = {
-            
-        },
-        settings = $.extend( {}, defaults, options );
+                    });
 
-        config( settings );
+                },
 
-        return this;
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
 
     };
+
+})(this, jQuery);
+/**
+ * @fileOverview _main.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._main = function(options){
+
+        var ele = aria.currentSelector.find("main"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+
+                         if(typeof role === "undefined"){
+                            $this.attr("role", "main");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _main.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._menu = function(options){
+
+        var ele = aria.currentSelector.find("menu"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role"),
+                            eleType = $this.prop("type");
+
+                            self.isHidden( $this );
+
+
+                         if(eleType === "toolbar" && typeof role === "undefined"){
+                            $this.attr("role", "toolbar");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _menuitem.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._menuitem = function(options){
+
+        var ele = aria.currentSelector.find("menuitem"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            eleType = $this.prop("type"),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+
+                         if(eleType === "checkbox" && typeof role === "undefined"){
+                            $this.attr("role", "menuitemcheckbox");
+                         }
+                         else if(eleType === "radio" && typeof role === "undefined"){
+                            $this.attr("role", "menuitemradio");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _meter.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._meter = function(options){
+
+        var ele = aria.currentSelector.find("meter"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+
+                         if(typeof role === "undefined"){
+                            $this.attr("role", "progressbar");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _meter.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._nav = function(options){
+
+        var ele = aria.currentSelector.find("nav"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+
+                         if(typeof role === "undefined"){
+                            $this.attr("role", "navigation");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _ol.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._ol = function(){
+
+
+        var ele = aria.currentSelector.find("ol"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "list");
+
+                        }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _option.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._option = function(){
+
+
+        var ele = aria.currentSelector.find("option"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role"),
+                            select = $this.closest('select'),
+                            datalist = $this.closest('datalist');
+
+                        if( ( select.length > 0 || datalist.length > 0 ) && typeof role === "undefined"){
+
+                            $this.attr("role", "option");
+
+                        }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _output.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._output = function(options){
+
+        var ele = aria.currentSelector.find("output"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+
+                         if(typeof role === "undefined"){
+                            $this.attr("role", "status");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _section.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._section = function(options){
+
+        var ele = aria.currentSelector.find("section"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+
+                         if(typeof role === "undefined"){
+                            $this.attr("role", "region");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _select.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._select = function(options){
+
+        var ele = aria.currentSelector.find("select"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role"),
+                            multiple = $this.prop("multiple");
+
+                            self.isHidden( $this );
+
+
+                         if(multiple && typeof role === "undefined"){
+                            $this.attr("role", "listbox");
+                            $this.attr("aria-multiselectable","true");
+                         } 
+                         else if(!multiple && typeof role === "undefined"){
+                            $this.attr("role", "listbox");
+                            $this.attr("aria-multiselectable","false");
+                         } 
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _tbody.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._tbody = function(options){
+
+        var ele = aria.currentSelector.find("tbody"),
+            // regex = /(^#|#$)/,
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+
+                         if( typeof role === "undefined"){
+                            $this.attr("role", "rowgroup");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _textarea.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._textarea = function(options){
+
+        var ele = aria.currentSelector.find("textarea"),
+            // regex = /(^#|#$)/,
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+
+                         if( typeof role === "undefined"){
+                            $this.attr("role", "textarea");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _tfoot.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._tfoot = function(options){
+
+        var ele = aria.currentSelector.find("tfoot"),
+            // regex = /(^#|#$)/,
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+
+                         if( typeof role === "undefined"){
+                            $this.attr("role", "rowgroup");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _thead.js traverse throught DOM and assign ARIA labels to all anchors.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._thead = function(options){
+
+        var ele = aria.currentSelector.find("thead"),
+            // regex = /(^#|#$)/,
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+
+                         if( typeof role === "undefined"){
+                            $this.attr("role", "rowgroup");
+                         }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _ul.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._ul = function(){
+
+
+        var ele = aria.currentSelector.find("ul"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+                },
+
+                defineRole: function(){
+
+                    $.each(ele, function(  ) {
+
+                        var $this = $(this),
+                            role = $this.prop("role");
+
+                            self.isHidden( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "list");
+
+                        }
+
+                    });
+
+                },
+
+                assignLabels: function(){
+
+
+                },
+
+                uiStates: function(){
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
