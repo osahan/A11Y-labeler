@@ -42,25 +42,7 @@ module.exports = function(grunt) {
       aria: {
         src: [
           'js/aria.js',
-          'js/_anchor.js',
-          'js/_area.js',
-          'js/_article.js',
-          'js/_aside.js',
-          'js/_body.js',
-          'js/_button.js',
-          'js/_datalist.js',
-          'js/_details.js',
-          'js/_dl.js',
-          'js/_form.js',
-          'js/_h1.js',
-          'js/_h2.js',
-          'js/_h3.js',
-          'js/_h4.js',
-          'js/_h5.js',
-          'js/_h6.js',
-          'js/_hr.js',
-          'js/_img.js',
-          'js/_input.js',
+          'js/**/*.js',
           'js/config.js' // this needs to be the last item in this list
         ],
         dest: 'dist/js/<%= pkg.name %>.js'
