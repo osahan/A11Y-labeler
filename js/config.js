@@ -14,6 +14,7 @@
         aria._button();
         aria._datalist();
         aria._details();
+        aria._dialog();
         aria._dl();
         aria._form();
         aria._h1();
@@ -25,7 +26,23 @@
         aria._hr();
         aria._img();
         aria._input();
-
+        aria._li();
+        aria._link();
+        aria._main();
+        aria._menu();
+        aria._menuitem();
+        aria._meter();
+        aria._nav();
+        aria._ol();
+        aria._option();
+        aria._output();
+        aria._section();
+        aria._select();
+        aria._tbody();
+        aria._textarea();
+        aria._tfoot();
+        aria._thead();
+        aria._ul();
 
     };
 

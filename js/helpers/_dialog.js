@@ -1,5 +1,5 @@
 /**
- * @fileOverview _details.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _dialog.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,17 +7,18 @@
 
 (function(window, $, undefined){
 
-    aria._details = function(){
+    aria._dialog = function(){
 
-
-        var ele = aria.currentSelector.find("details"),
+        var ele = aria.currentSelector.find("dialog"),
             self = this,
             labeler = {
 
                 init: function(){
-
-                    this.defineRole();
-                    this.assignLabels();
+            
+                    if(ele.length > 0 ){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -29,12 +30,14 @@
                 },
 
                 defineRole: function(){
+                    $.each(ele, function() {
 
-                    $.each(ele, function( index, value ) {
+                    var $this = $(this),
+                        role = $this.prop("role");
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                        if( typeof role === "undefined" ){
 
-                            $(value).attr("role", "group");
+                            $(value).attr("role", "dialog");
 
                         }
 
@@ -53,7 +56,6 @@
             };
 
         labeler.init();
-
     };
 
 })(this, jQuery);

@@ -1,5 +1,5 @@
 /**
- * @fileOverview _h4.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h2.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,17 +7,19 @@
 
 (function(window, $, undefined){
 
-    aria._h4 = function(){
+    aria._h2 = function(options){
 
 
-        var ele = aria.currentSelector.find("h4"),
+        var ele = aria.currentSelector.find("h2"),
             self = this,
             labeler = {
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 

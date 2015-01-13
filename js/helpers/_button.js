@@ -1,5 +1,5 @@
 /**
- * @fileOverview _article.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _button.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,24 +7,19 @@
 
 (function(window, $, undefined){
 
-    aria._article = function(){
+    aria._button = function(){
 
 
-        var ele = aria.currentSelector.find("article"),
+        var ele = aria.currentSelector.find("button"),
             self = this,
             labeler = {
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
-
-                },
-
-                setOptions: function(){
-
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -34,7 +29,7 @@
 
                         if( typeof $(value).prop("role") === "undefined"){
 
-                            $(value).attr("role", "article");
+                            $(value).attr("role", "button");
 
                         }
 

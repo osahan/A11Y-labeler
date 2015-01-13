@@ -1,5 +1,5 @@
 /**
- * @fileOverview _form.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _dl.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,18 +7,19 @@
 
 (function(window, $, undefined){
 
-    aria._form = function(options){
+    aria._dl = function(){
 
 
-        var ele = aria.currentSelector.find("form"),
+        var ele = aria.currentSelector.find("dl"),
             self = this,
             labeler = {
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
-
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
                 },
 
                 defineRole: function(){
@@ -27,7 +28,7 @@
 
                         if( typeof $(value).prop("role") === "undefined"){
 
-                            $(value).attr("role", "form");
+                            $(value).attr("role", "list");
 
                         }
 

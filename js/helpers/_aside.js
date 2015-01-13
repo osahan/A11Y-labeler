@@ -16,8 +16,10 @@
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 

@@ -1,5 +1,5 @@
 /**
- * @fileOverview _h5.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _details.js traverse throught DOM and assign ARIA labels to all area elements with href.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,17 +7,26 @@
 
 (function(window, $, undefined){
 
-    aria._h5 = function(){
+    aria._details = function(){
 
 
-        var ele = aria.currentSelector.find("h5"),
+        var ele = aria.currentSelector.find("details"),
             self = this,
             labeler = {
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
+
+                },
+
+                setOptions: function(){
+
+                    options.role = options.role || aria.options.role;
+                    options.label = options.label || aria.options.label;
 
                 },
 
@@ -27,7 +36,7 @@
 
                         if( typeof $(value).prop("role") === "undefined"){
 
-                            $(value).attr("role", "heading");
+                            $(value).attr("role", "group");
 
                         }
 

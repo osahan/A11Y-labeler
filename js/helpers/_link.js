@@ -1,5 +1,5 @@
 /**
- * @fileOverview anchor.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _link.js traverse throught DOM and assign ARIA labels to all anchors.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,17 +7,19 @@
 
 (function(window, $, undefined){
 
-    aria._anchor = function(options){
+    aria._link = function(options){
 
-        var ele = aria.currentSelector.find("a"),
-            regex = /(^#|#$)/,
+        var ele = aria.currentSelector.find("link"),
+            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 
                 init: function(){
 
-                    this.defineRole();
-                    this.assignLabels();
+                    if( ele.length > 0){
+                        this.defineRole();
+                        this.assignLabels();
+                    }
 
                 },
 
@@ -31,12 +33,10 @@
 
                             self.isHidden( $this );
 
-                             if(href && regex.test(href) && typeof role === "undefined"){
-                                $this.attr("role", "button");
-                             }  
-                             else if(href && !regex.test(href) && typeof role === "undefined"){
-                                $this.attr("role", "link");
-                             }  
+
+                         if(href && typeof role === "undefined"){
+                            $this.attr("role", "link");
+                         }
 
                     });
 
