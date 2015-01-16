@@ -29,7 +29,7 @@ aria.isHidden = function(ele){
 
 };
 
-aria.keetTrack = function(ele){
+aria.keepTrack = function(ele){
 
 // Placeholder for future watch method;
 
@@ -134,7 +134,7 @@ aria.keetTrack = function(ele){
                             role = $this.prop("role"),
                             roleType;
 
-                            self.keetTrack( $this );
+                            self.keepTrack( $this );
 
                             if(href && regex.test(href) && typeof role === "undefined"){
                                 roleType =  "button";
@@ -183,11 +183,16 @@ aria.keetTrack = function(ele){
 
                 assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                        var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "article");
+                        self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "article");
 
                         }
 
@@ -221,32 +226,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "complementary");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "complementary");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -275,32 +275,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "document");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "document");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -329,32 +324,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "button");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "button");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -383,32 +373,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "listbox");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "listbox");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -437,39 +422,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                setOptions: function(){
+                assignLabels: function(){
 
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    $.each(ele, function() {
 
-                },
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                defineRole: function(){
+                            self.keepTrack( $this );
 
-                    $.each(ele, function( index, value ) {
+                        if( typeof role === "undefined"){
 
-                        if( typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "group");
+                            $this.attr("role", "group");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -497,24 +470,19 @@ aria.keetTrack = function(ele){
                 init: function(){
             
                     if(ele.length > 0 ){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                setOptions: function(){
+                assignLabels: function(){
 
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
-
-                },
-
-                defineRole: function(){
                     $.each(ele, function() {
 
                     var $this = $(this),
                         role = $this.prop("role");
+
+                        self.keepTrack( $this );
 
                         if( typeof role === "undefined" ){
 
@@ -523,15 +491,6 @@ aria.keetTrack = function(ele){
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -560,31 +519,26 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function( index, value ) {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "list");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "list");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -624,6 +578,8 @@ aria.keetTrack = function(ele){
                     var $this = el.first(),
                         role = $this.prop('role');
 
+                        self.keepTrack( $this );
+
                     if(typeof role === "undefined"){
                         $this.attr("role", "contentinfo");
                     }
@@ -655,32 +611,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "form");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "form");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -709,7 +660,6 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
@@ -717,24 +667,20 @@ aria.keetTrack = function(ele){
 
                 defineRole: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "heading");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "heading");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -763,32 +709,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function( index, value ) {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "heading");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "heading");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -816,32 +757,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "heading");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "heading");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -870,32 +806,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "heading");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "heading");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -924,32 +855,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "heading");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "heading");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -976,30 +902,25 @@ aria.keetTrack = function(ele){
             labeler = {
 
                 init: function(){
-                    this.defineRole();
                     this.assignLabels();
-                },
-
-                defineRole: function(){
-
-                    $.each(ele, function( index, value ) {
-
-                        if( typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "heading");
-
-                        }
-
-                    });
-
                 },
 
                 assignLabels: function(){
 
+                    $.each(ele, function() {
 
-                },
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                uiStates: function(){
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "heading");
+
+                        }
+
+                    });
 
                 }
             };
@@ -1070,32 +991,27 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "separator");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "separator");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1124,56 +1040,54 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( $(value).prop("alt") && typeof $(value).prop("role") === "undefined"){
+                        var $this = $(this),
+                            alt = $this.prop("alt"),
+                            eleType = $this.prop("type"),
+                            role = $this.prop("role"),
+                            roleType;
 
-                            $(value).attr("role", "img");
+                            self.keepTrack( $this );
 
-                        }
-                        else if( !$(value).prop("alt") && typeof $(value).prop("role") === "undefined"){
+                        if( alt && typeof role === "undefined"){
 
-                            $(value).attr("role", "presentation");
-
-                        }
-                        else if( ($(value).prop("type") === "button" || $(value).prop("type") === "reset" || $(value).prop("type") === "submit" || $(value).prop("type") === "image") && typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "button");
+                            $this.attr("role", "img");
 
                         }
-                        else if( ( $(value).prop("type") === "email" || $(value).prop("type") === "password" ) && typeof $(value).prop("role") === "undefined"){
+                        else if( !alt && typeof role === "undefined"){
 
-                            $(value).attr("role", "textbox");
-
-                        }
-                        else if($(value).prop("type") === "radio" && typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "radio");
+                            $this.attr("role", "presentation");
 
                         }
-                        else if($(value).prop("type") === "range" && typeof $(value).prop("role") === "undefined"){
+                        else if( (eleType === "button" || eleType === "reset" || eleType === "submit" || eleType === "image") && typeof role === "undefined"){
 
-                            $(value).attr("role", "slider");
+                            $this.attr("role", "button");
+
+                        }
+                        else if( ( eleType === "email" || eleType === "password" ) && typeof role === "undefined"){
+
+                            $this.attr("role", "textbox");
+
+                        }
+                        else if(eleType === "radio" && typeof role === "undefined"){
+
+                            $this.attr("role", "radio");
+
+                        }
+                        else if(eleType === "range" && typeof role === "undefined"){
+
+                            $this.attr("role", "slider");
 
                         }
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1201,13 +1115,12 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -1217,6 +1130,7 @@ aria.keetTrack = function(ele){
                             listAttr = $(this).prop("list"),
                             roleType;
 
+                            self.keepTrack( $this );
 
                         switch (eleType) {
                             case button:
@@ -1263,15 +1177,6 @@ aria.keetTrack = function(ele){
 
                     });
 
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
-
                 }
             };
 
@@ -1299,13 +1204,12 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -1314,6 +1218,8 @@ aria.keetTrack = function(ele){
                             ul = $this.closest('ul'),
                             ol = $this.closest('ol');
 
+                            self.keepTrack( $this );
+
                         if( ( ul.length > 0 || ol.length > 0 ) && typeof role === "undefined"){
 
                             $this.attr("role", "listitem");
@@ -1321,15 +1227,6 @@ aria.keetTrack = function(ele){
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1358,13 +1255,12 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -1372,7 +1268,7 @@ aria.keetTrack = function(ele){
                             href = $this.prop("href"),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
+                            self.keepTrack( $this );
 
 
                          if(href && typeof role === "undefined"){
@@ -1380,15 +1276,6 @@ aria.keetTrack = function(ele){
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1458,13 +1345,12 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -1472,23 +1358,13 @@ aria.keetTrack = function(ele){
                             role = $this.prop("role"),
                             eleType = $this.prop("type");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if(eleType === "toolbar" && typeof role === "undefined"){
                             $this.attr("role", "toolbar");
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1516,13 +1392,12 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -1530,8 +1405,7 @@ aria.keetTrack = function(ele){
                             eleType = $this.prop("type"),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if(eleType === "checkbox" && typeof role === "undefined"){
                             $this.attr("role", "menuitemcheckbox");
@@ -1541,15 +1415,6 @@ aria.keetTrack = function(ele){
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1577,20 +1442,19 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
+                            self.keepTrack( $this );
 
 
                          if(typeof role === "undefined"){
@@ -1598,15 +1462,6 @@ aria.keetTrack = function(ele){
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1634,36 +1489,25 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if(typeof role === "undefined"){
                             $this.attr("role", "navigation");
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1692,19 +1536,18 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
+                            self.keepTrack( $this );
 
                         if( typeof role === "undefined"){
 
@@ -1713,15 +1556,6 @@ aria.keetTrack = function(ele){
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1750,13 +1584,12 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -1765,6 +1598,8 @@ aria.keetTrack = function(ele){
                             select = $this.closest('select'),
                             datalist = $this.closest('datalist');
 
+                            self.keepTrack( $this );
+
                         if( ( select.length > 0 || datalist.length > 0 ) && typeof role === "undefined"){
 
                             $this.attr("role", "option");
@@ -1772,15 +1607,6 @@ aria.keetTrack = function(ele){
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1808,36 +1634,25 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if(typeof role === "undefined"){
                             $this.attr("role", "status");
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1865,36 +1680,25 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if(typeof role === "undefined"){
                             $this.attr("role", "region");
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1922,13 +1726,12 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -1936,8 +1739,7 @@ aria.keetTrack = function(ele){
                             role = $this.prop("role"),
                             multiple = $this.prop("multiple");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if(multiple && typeof role === "undefined"){
                             $this.attr("role", "listbox");
@@ -1949,15 +1751,6 @@ aria.keetTrack = function(ele){
                          } 
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -1986,36 +1779,25 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if( typeof role === "undefined"){
                             $this.attr("role", "rowgroup");
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -2044,36 +1826,25 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if( typeof role === "undefined"){
                             $this.attr("role", "textarea");
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -2102,36 +1873,25 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if( typeof role === "undefined"){
                             $this.attr("role", "rowgroup");
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -2160,20 +1920,19 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
+                            self.keepTrack( $this );
 
 
                          if( typeof role === "undefined"){
@@ -2181,15 +1940,6 @@ aria.keetTrack = function(ele){
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -2218,19 +1968,18 @@ aria.keetTrack = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
+                            self.keepTrack( $this );
 
                         if( typeof role === "undefined"){
 
@@ -2240,16 +1989,8 @@ aria.keetTrack = function(ele){
 
                     });
 
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
-
                 }
+
             };
 
         labeler.init();
