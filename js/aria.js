@@ -29,7 +29,7 @@ aria.isHidden = function(ele){
 
 };
 
-aria.keetTrack = function(ele){
+aria.keepTrack = function(ele){
 
 // Placeholder for future watch method;
 
