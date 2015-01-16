@@ -21,7 +21,7 @@ module.exports = function(grunt) {
         options: {
         '-W099': true,
         },
-        src: 'js/*.js'
+        src: 'js/**/*.js'
       },
 
       options: {
@@ -100,7 +100,7 @@ module.exports = function(grunt) {
     watch: {
         grunt: { files: ['Gruntfile.js'] },
         js: {
-            files: 'js/*.js',
+            files: 'js/**/*.js',
             tasks: ['default']
         },
         less: {
