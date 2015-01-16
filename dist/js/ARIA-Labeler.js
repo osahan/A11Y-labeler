@@ -29,6 +29,13 @@ aria.isHidden = function(ele){
 
 };
 
+aria.keetTrack = function(ele){
+
+// Placeholder for future watch method;
+
+    return;
+};
+
 /**
  * @fileOverview This is the Config file for ARIA-labeller, where we call all the plugins.
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
@@ -54,6 +61,7 @@ aria.isHidden = function(ele){
         aria._h4();
         aria._h5();
         aria._h6();
+        aria._header();
         aria._hr();
         aria._img();
         aria._input();
@@ -94,7 +102,7 @@ aria.isHidden = function(ele){
 
     };
 /**
- * @fileOverview anchor.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview anchor.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -112,39 +120,34 @@ aria.isHidden = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function(  ) {
+                    $.each(ele, function() {
 
                         var $this = $(this),
                             href = $this.prop("href"),
-                            role = $this.prop("role");
+                            role = $this.prop("role"),
+                            roleType;
 
-                            self.isHidden( $this );
+                            self.keetTrack( $this );
 
-                             if(href && regex.test(href) && typeof role === "undefined"){
-                                $this.attr("role", "button");
-                             }
-                             else if(href && !regex.test(href) && typeof role === "undefined"){
-                                $this.attr("role", "link");
-                             }
+                            if(href && regex.test(href) && typeof role === "undefined"){
+                                roleType =  "button";
+                            }
+                            else if(href && !regex.test(href) && typeof role === "undefined"){
+                                roleType =  "link";
+                            }
+
+                            if(roleType){
+                                $this.attr('role', roleType);
+                            }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
@@ -155,7 +158,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _article.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _article.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -173,13 +176,12 @@ aria.isHidden = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function( index, value ) {
 
@@ -193,14 +195,6 @@ aria.isHidden = function(ele){
 
                 },
 
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
-
-                }
             };
 
         labeler.init();
@@ -209,7 +203,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _aside.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _aside.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -263,7 +257,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _body.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _body.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -317,7 +311,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _button.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _button.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -371,7 +365,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _datalist.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _datalist.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -425,7 +419,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _details.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _details.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -486,7 +480,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _dialog.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _dialog.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -548,7 +542,7 @@ aria.isHidden = function(ele){
 })(this, jQuery);
 
 /**
- * @fileOverview _dl.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _dl.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -601,7 +595,49 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _form.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _footer.js traverse throught DOM and assign ARIA labels.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._footer = function(options){
+
+        var ele = aria.currentSelector.find("footer"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.assignLabels();
+                    }
+
+                },
+
+                assignLabels: function(){
+
+                    // Role for footer is only assigned once (assumed the first footer is main);
+
+                    var $this = el.first(),
+                        role = $this.prop('role');
+
+                    if(typeof role === "undefined"){
+                        $this.attr("role", "contentinfo");
+                    }
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _form.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -655,7 +691,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _h1.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h1.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -709,7 +745,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _h2.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h2.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -763,7 +799,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _h3.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h3.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -816,7 +852,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _h4.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h4.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -870,7 +906,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _h5.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h5.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -924,7 +960,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview area.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -974,7 +1010,49 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _hr.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _header.js traverse throught DOM and assign ARIA labels.
+ *
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+(function(window, $, undefined){
+
+    aria._header = function(options){
+
+        var ele = aria.currentSelector.find("header"),
+            self = this,
+            labeler = {
+
+                init: function(){
+
+                    if( ele.length > 0){
+                        this.assignLabels();
+                    }
+
+                },
+
+                assignLabels: function(){
+
+                    // Role for header is only assigned once (assumed the first header is main);
+
+                    var $this = el.first(),
+                        role = $this.prop('role');
+
+                    if(typeof role === "undefined"){
+                        $this.attr("role", "banner");
+                    }
+
+                }
+            };
+
+        labeler.init();
+
+    };
+
+})(this, jQuery);
+/**
+ * @fileOverview _hr.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1028,7 +1106,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _img.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _img.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1106,7 +1184,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview area.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1203,7 +1281,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _li.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _li.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1262,7 +1340,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _link.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _link.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1321,7 +1399,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _main.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _main.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1338,36 +1416,21 @@ aria.isHidden = function(ele){
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
-
-                    $.each(ele, function(  ) {
-
-                        var $this = $(this),
-                            role = $this.prop("role");
-
-                            self.isHidden( $this );
-
-
-                         if(typeof role === "undefined"){
-                            $this.attr("role", "main");
-                         }
-
-                    });
-
-                },
-
                 assignLabels: function(){
 
+                    // Role for main is only assigned once
 
-                },
+                    var $this = el.first(),
+                        role = $this.prop('role');
 
-                uiStates: function(){
+                    if(typeof role === "undefined"){
+                        $this.attr("role", "main");
+                    }
 
                 }
             };
@@ -1378,7 +1441,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _main.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _main.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1436,7 +1499,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _menuitem.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _menuitem.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1497,7 +1560,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _meter.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _meter.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1554,7 +1617,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _meter.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _meter.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1611,7 +1674,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _ol.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _ol.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1669,7 +1732,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _option.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _option.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1728,7 +1791,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _output.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _output.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1785,7 +1848,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _section.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _section.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1842,7 +1905,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _select.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _select.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1905,7 +1968,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _tbody.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _tbody.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1963,7 +2026,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _textarea.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _textarea.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -2021,7 +2084,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _tfoot.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _tfoot.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -2079,7 +2142,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _thead.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview _thead.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -2137,7 +2200,7 @@ aria.isHidden = function(ele){
 
 })(this, jQuery);
 /**
- * @fileOverview _ul.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _ul.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
