@@ -17,11 +17,6 @@
         "exampleMarkup": "<aside>This is a test aside note</aside>"
       },
       {
-        "title": "Body ***",
-        "visbileMarkup": "<code>body</code> element will get Roles: document.",
-        "exampleMarkup": "<body>This is a test body :)</body>"
-      },
-      {
         "title": "Button",
         "visbileMarkup": "<code>button</code> element will get Roles: button, link, menuitem, menuitemcheckbox, menuitemradio or radio.",
         "exampleMarkup": "<button>This is a test aside note</button>"
