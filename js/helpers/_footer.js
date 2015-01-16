@@ -1,5 +1,5 @@
 /**
- * @fileOverview _main.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _footer.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,9 +7,9 @@
 
 (function(window, $, undefined){
 
-    aria._main = function(options){
+    aria._footer = function(options){
 
-        var ele = aria.currentSelector.find("main"),
+        var ele = aria.currentSelector.find("footer"),
             self = this,
             labeler = {
 
@@ -23,13 +23,13 @@
 
                 assignLabels: function(){
 
-                    // Role for main is only assigned once
+                    // Role for footer is only assigned once (assumed the first footer is main);
 
                     var $this = el.first(),
                         role = $this.prop('role');
 
                     if(typeof role === "undefined"){
-                        $this.attr("role", "main");
+                        $this.attr("role", "contentinfo");
                     }
 
                 }

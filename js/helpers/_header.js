@@ -1,5 +1,5 @@
 /**
- * @fileOverview _main.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _header.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,9 +7,9 @@
 
 (function(window, $, undefined){
 
-    aria._main = function(options){
+    aria._header = function(options){
 
-        var ele = aria.currentSelector.find("main"),
+        var ele = aria.currentSelector.find("header"),
             self = this,
             labeler = {
 
@@ -23,13 +23,13 @@
 
                 assignLabels: function(){
 
-                    // Role for main is only assigned once
+                    // Role for header is only assigned once (assumed the first header is main);
 
                     var $this = el.first(),
                         role = $this.prop('role');
 
                     if(typeof role === "undefined"){
-                        $this.attr("role", "main");
+                        $this.attr("role", "banner");
                     }
 
                 }

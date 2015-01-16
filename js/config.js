@@ -23,6 +23,7 @@
         aria._h4();
         aria._h5();
         aria._h6();
+        aria._header();
         aria._hr();
         aria._img();
         aria._input();

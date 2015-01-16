@@ -1,5 +1,5 @@
 /**
- * @fileOverview _article.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _article.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -17,13 +17,12 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function( index, value ) {
 
@@ -37,14 +36,6 @@
 
                 },
 
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
-
-                }
             };
 
         labeler.init();

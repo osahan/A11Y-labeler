@@ -1,5 +1,5 @@
 /**
- * @fileOverview _h4.js traverse throught DOM and assign ARIA labels to all area elements with href.
+ * @fileOverview _h4.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0

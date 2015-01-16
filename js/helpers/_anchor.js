@@ -1,5 +1,5 @@
 /**
- * @fileOverview anchor.js traverse throught DOM and assign ARIA labels to all anchors.
+ * @fileOverview anchor.js traverse throught DOM and assign ARIA labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -17,39 +17,34 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function(  ) {
+                    $.each(ele, function() {
 
                         var $this = $(this),
                             href = $this.prop("href"),
-                            role = $this.prop("role");
+                            role = $this.prop("role"),
+                            roleType;
 
-                            self.isHidden( $this );
+                            self.keetTrack( $this );
 
-                             if(href && regex.test(href) && typeof role === "undefined"){
-                                $this.attr("role", "button");
-                             }
-                             else if(href && !regex.test(href) && typeof role === "undefined"){
-                                $this.attr("role", "link");
-                             }
+                            if(href && regex.test(href) && typeof role === "undefined"){
+                                roleType =  "button";
+                            }
+                            else if(href && !regex.test(href) && typeof role === "undefined"){
+                                roleType =  "link";
+                            }
+
+                            if(roleType){
+                                $this.attr('role', roleType);
+                            }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };
