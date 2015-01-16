@@ -16,13 +16,12 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -30,8 +29,7 @@
                             eleType = $this.prop("type"),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if(eleType === "checkbox" && typeof role === "undefined"){
                             $this.attr("role", "menuitemcheckbox");
@@ -41,15 +39,6 @@
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

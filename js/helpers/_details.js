@@ -17,39 +17,27 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                setOptions: function(){
+                assignLabels: function(){
 
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
+                    $.each(ele, function() {
 
-                },
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                defineRole: function(){
+                            self.keepTrack( $this );
 
-                    $.each(ele, function( index, value ) {
+                        if( typeof role === "undefined"){
 
-                        if( typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "group");
+                            $this.attr("role", "group");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

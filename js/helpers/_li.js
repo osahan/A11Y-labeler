@@ -17,13 +17,12 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -32,6 +31,8 @@
                             ul = $this.closest('ul'),
                             ol = $this.closest('ol');
 
+                            self.keepTrack( $this );
+
                         if( ( ul.length > 0 || ol.length > 0 ) && typeof role === "undefined"){
 
                             $this.attr("role", "listitem");
@@ -39,15 +40,6 @@
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

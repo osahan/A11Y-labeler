@@ -16,24 +16,19 @@
                 init: function(){
             
                     if(ele.length > 0 ){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                setOptions: function(){
+                assignLabels: function(){
 
-                    options.role = options.role || aria.options.role;
-                    options.label = options.label || aria.options.label;
-
-                },
-
-                defineRole: function(){
                     $.each(ele, function() {
 
                     var $this = $(this),
                         role = $this.prop("role");
+
+                        self.keepTrack( $this );
 
                         if( typeof role === "undefined" ){
 
@@ -42,15 +37,6 @@
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

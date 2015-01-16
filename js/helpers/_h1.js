@@ -17,7 +17,6 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
@@ -25,24 +24,20 @@
 
                 defineRole: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "heading");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "heading");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

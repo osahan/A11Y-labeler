@@ -28,6 +28,8 @@
                     var $this = el.first(),
                         role = $this.prop('role');
 
+                        self.keepTrack( $this );
+
                     if(typeof role === "undefined"){
                         $this.attr("role", "contentinfo");
                     }

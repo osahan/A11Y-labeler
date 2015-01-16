@@ -16,13 +16,12 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -32,6 +31,7 @@
                             listAttr = $(this).prop("list"),
                             roleType;
 
+                            self.keepTrack( $this );
 
                         switch (eleType) {
                             case button:
@@ -77,15 +77,6 @@
                         $(this).attr("role", roleType);
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

@@ -15,30 +15,25 @@
             labeler = {
 
                 init: function(){
-                    this.defineRole();
                     this.assignLabels();
-                },
-
-                defineRole: function(){
-
-                    $.each(ele, function( index, value ) {
-
-                        if( typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "heading");
-
-                        }
-
-                    });
-
                 },
 
                 assignLabels: function(){
 
+                    $.each(ele, function() {
 
-                },
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                uiStates: function(){
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "heading");
+
+                        }
+
+                    });
 
                 }
             };

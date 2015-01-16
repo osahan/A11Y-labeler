@@ -17,56 +17,54 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
-                        if( $(value).prop("alt") && typeof $(value).prop("role") === "undefined"){
+                        var $this = $(this),
+                            alt = $this.prop("alt"),
+                            eleType = $this.prop("type"),
+                            role = $this.prop("role"),
+                            roleType;
 
-                            $(value).attr("role", "img");
+                            self.keepTrack( $this );
 
-                        }
-                        else if( !$(value).prop("alt") && typeof $(value).prop("role") === "undefined"){
+                        if( alt && typeof role === "undefined"){
 
-                            $(value).attr("role", "presentation");
-
-                        }
-                        else if( ($(value).prop("type") === "button" || $(value).prop("type") === "reset" || $(value).prop("type") === "submit" || $(value).prop("type") === "image") && typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "button");
+                            $this.attr("role", "img");
 
                         }
-                        else if( ( $(value).prop("type") === "email" || $(value).prop("type") === "password" ) && typeof $(value).prop("role") === "undefined"){
+                        else if( !alt && typeof role === "undefined"){
 
-                            $(value).attr("role", "textbox");
-
-                        }
-                        else if($(value).prop("type") === "radio" && typeof $(value).prop("role") === "undefined"){
-
-                            $(value).attr("role", "radio");
+                            $this.attr("role", "presentation");
 
                         }
-                        else if($(value).prop("type") === "range" && typeof $(value).prop("role") === "undefined"){
+                        else if( (eleType === "button" || eleType === "reset" || eleType === "submit" || eleType === "image") && typeof role === "undefined"){
 
-                            $(value).attr("role", "slider");
+                            $this.attr("role", "button");
+
+                        }
+                        else if( ( eleType === "email" || eleType === "password" ) && typeof role === "undefined"){
+
+                            $this.attr("role", "textbox");
+
+                        }
+                        else if(eleType === "radio" && typeof role === "undefined"){
+
+                            $this.attr("role", "radio");
+
+                        }
+                        else if(eleType === "range" && typeof role === "undefined"){
+
+                            $this.attr("role", "slider");
 
                         }
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

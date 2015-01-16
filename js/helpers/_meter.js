@@ -16,20 +16,19 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
                             role = $this.prop("role");
 
-                            self.isHidden( $this );
+                            self.keepTrack( $this );
 
 
                          if(typeof role === "undefined"){
@@ -37,15 +36,6 @@
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

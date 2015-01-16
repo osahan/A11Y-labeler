@@ -17,31 +17,26 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function( index, value ) {
 
-                        if( typeof $(value).prop("role") === "undefined"){
+                      var $this = $(this),
+                            role = $this.prop("role");
 
-                            $(value).attr("role", "list");
+                            self.keepTrack( $this );
+
+                        if( typeof role === "undefined"){
+
+                            $this.attr("role", "list");
 
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

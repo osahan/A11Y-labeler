@@ -16,13 +16,12 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -30,23 +29,13 @@
                             role = $this.prop("role"),
                             eleType = $this.prop("type");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if(eleType === "toolbar" && typeof role === "undefined"){
                             $this.attr("role", "toolbar");
                          }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

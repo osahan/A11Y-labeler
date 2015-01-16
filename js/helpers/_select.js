@@ -16,13 +16,12 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -30,8 +29,7 @@
                             role = $this.prop("role"),
                             multiple = $this.prop("multiple");
 
-                            self.isHidden( $this );
-
+                            self.keepTrack( $this );
 
                          if(multiple && typeof role === "undefined"){
                             $this.attr("role", "listbox");
@@ -43,15 +41,6 @@
                          } 
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

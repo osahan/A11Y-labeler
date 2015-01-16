@@ -17,13 +17,12 @@
                 init: function(){
 
                     if( ele.length > 0){
-                        this.defineRole();
                         this.assignLabels();
                     }
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function(  ) {
 
@@ -32,6 +31,8 @@
                             select = $this.closest('select'),
                             datalist = $this.closest('datalist');
 
+                            self.keepTrack( $this );
+
                         if( ( select.length > 0 || datalist.length > 0 ) && typeof role === "undefined"){
 
                             $this.attr("role", "option");
@@ -39,15 +40,6 @@
                         }
 
                     });
-
-                },
-
-                assignLabels: function(){
-
-
-                },
-
-                uiStates: function(){
 
                 }
             };

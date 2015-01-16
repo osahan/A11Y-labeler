@@ -31,7 +31,7 @@
                             role = $this.prop("role"),
                             roleType;
 
-                            self.keetTrack( $this );
+                            self.keepTrack( $this );
 
                             if(href && regex.test(href) && typeof role === "undefined"){
                                 roleType =  "button";
