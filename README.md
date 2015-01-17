@@ -19,7 +19,7 @@ Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Lab
     $("body").aria();
 
 ```
-###Before
+**Before**
 ```html
 <a href="http://www.example.com" role="link">a element with pre-defined role</a>
 
@@ -29,7 +29,7 @@ Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Lab
 
 <a>a element without href</a>
 ```
-###After
+**After**
 ```html
 <a href="http://www.example.com" role="link">a element with pre-defined role</a>
 
