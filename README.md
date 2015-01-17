@@ -33,7 +33,7 @@ Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Lab
 ```html
 <a href="http://www.example.com" role="link">a element with pre-defined role</a>
 
- <a href="http://www.example.com" role="link">a element with a href</a>
+<a href="http://www.example.com" role="link">a element with a href</a>
 
 <a href="#" role="button">a element with hash as a href</a>
 
