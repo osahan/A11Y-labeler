@@ -1,5 +1,6 @@
 ARIA-Labeler
 ============
+(IN PROGRESS...)
 
 A Lightweight jQuery Plugin that assigns right role and ARIA label on DOM elements
 
