@@ -23,9 +23,9 @@ Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Lab
 ```html
 <a href="http://www.example.com" role="link">anchor with pre-defined role</a>
 
-<a href="http://www.example.com">anchor with a href</a>
+<a href="http://www.example.com">anchor with href</a>
 
-<a href="#">anchor with hash as a href</a>
+<a href="#">anchor with hash as href</a>
 
 <a>anchor without href</a>
 ```
@@ -33,9 +33,9 @@ Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Lab
 ```html
 <a href="http://www.example.com" role="link">anchor with pre-defined role</a>
 
-<a href="http://www.example.com" role="link">anchor with a href</a>
+<a href="http://www.example.com" role="link">anchor with href</a>
 
-<a href="#" role="button">anchor with hash as a href</a>
+<a href="#" role="button">anchor with hash as href</a>
 
 <a>anchor without href</a>
 ```
