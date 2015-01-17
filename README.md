@@ -1,13 +1,7 @@
 ARIA-Labeler
 ============
 
-A simple jQuery Plugin that assigns right role and ARIA label on DOM elements
-
-
-
-## jQuery.aria
-Lightweight jQuery extension. 
-
+A Lightweight jQuery Plugin that assigns right role and ARIA label on DOM elements
 
 ## Installation
 Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Labeler.js` just before `</body>` of your HTML document:
@@ -17,7 +11,6 @@ Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Lab
 ```
 
 ## How to Use
-
 
 **Syntax Example**  
 ```javascript
