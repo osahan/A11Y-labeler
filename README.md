@@ -21,21 +21,21 @@ Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Lab
 ```
 **Before**
 ```html
-<a href="http://www.example.com" role="link">a element with pre-defined role</a>
+<a href="http://www.example.com" role="link">anchor with pre-defined role</a>
 
-<a href="http://www.example.com">a element with a href</a>
+<a href="http://www.example.com">anchor with a href</a>
 
-<a href="#">a element with hash as a href</a>
+<a href="#">anchor with hash as a href</a>
 
-<a>a element without href</a>
+<a>anchor without href</a>
 ```
 **After**
 ```html
-<a href="http://www.example.com" role="link">a element with pre-defined role</a>
+<a href="http://www.example.com" role="link">anchor with pre-defined role</a>
 
-<a href="http://www.example.com" role="link">a element with a href</a>
+<a href="http://www.example.com" role="link">anchor with a href</a>
 
-<a href="#" role="button">a element with hash as a href</a>
+<a href="#" role="button">anchor with hash as a href</a>
 
-<a>a element without href</a>
+<a>anchor without href</a>
 ```
