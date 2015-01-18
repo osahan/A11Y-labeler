@@ -10,7 +10,7 @@
     aria._anchor = function(options){
 
         var ele = aria.currentSelector.find("a"),
-            regex = /(^#|#$)/,
+            regex = /(^#|#$|\b^javascript:\b|\b^mailto:\b)/,
             self = this,
             labeler = {
 
