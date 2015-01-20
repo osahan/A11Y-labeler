@@ -4,7 +4,7 @@
  * @version 1.0.0
  */
 
-    var config  = function(options){
+aria.applyLabels  = function(options){
 
         aria._anchor();
         // aria._area(options);
@@ -49,17 +49,35 @@
 
 
 
-    $.fn.aria = function( options ){
-       
-        aria.currentSelector = this;
+aria.observeMutation  = function(){
 
-        var  defaults = {
-            
-        },
-        settings = $.extend( {}, defaults, options );
+    var observer = new MutationObserver(function(mutations) {
+      // mutations.forEach(function(mutation) {
+      //   console.log(mutation.type);
+      // });
+      // Need to write a logic based on what got changed
+        aria.applyLabels();
+    });
 
-        config( settings );
+    observer.observe(this.currentSelector[0], {
+        attributes: true,
+        childList: true,
+        characterData: true
+    });
 
-        return this;
+};
 
-    };
+
+$.fn.aria = function( options ){
+    aria.currentSelector = this;
+
+    var  defaults = {
+        
+    },
+    settings = $.extend( {}, defaults, options );
+
+    aria.applyLabels( settings );
+    aria.observeMutation();
+
+    return this;
+};
