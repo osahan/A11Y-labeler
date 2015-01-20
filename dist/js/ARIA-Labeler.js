@@ -42,7 +42,7 @@ aria.keepTrack = function(ele){
  * @version 1.0.0
  */
 
-    var config  = function(options){
+aria.applyLabels  = function(options){
 
         aria._anchor();
         // aria._area(options);
@@ -87,20 +87,41 @@ aria.keepTrack = function(ele){
 
 
 
-    $.fn.aria = function( options ){
-       
-        aria.currentSelector = this;
+aria.observeMutation  = function(){
 
-        var  defaults = {
-            
-        },
-        settings = $.extend( {}, defaults, options );
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        console.log(mutation.type);
+        // $(this.currentSelector[0]).aria();
+      });
+        aria.applyLabels();
+    });
 
-        config( settings );
+    observer.observe(this.currentSelector[0], {
+        attributes: true,
+        childList: true,
+        characterData: true
+    });
 
-        return this;
+};
 
-    };
+
+$.fn.aria = function( options ){
+   // console.log( "this got fired ", this);
+    aria.currentSelector = this;
+
+    var  defaults = {
+        
+    },
+    settings = $.extend( {}, defaults, options );
+
+    aria.applyLabels( settings );
+    aria.observeMutation();
+
+    return this;
+
+};
+
 /**
  * @fileOverview anchor.js traverse throught DOM and assign ARIA labels.
  *
@@ -113,7 +134,7 @@ aria.keepTrack = function(ele){
     aria._anchor = function(options){
 
         var ele = aria.currentSelector.find("a"),
-            regex = /(^#|#$)/,
+            regex = /(^#|#$|\b^javascript:\b|\b^mailto:\b)/,
             self = this,
             labeler = {
 
