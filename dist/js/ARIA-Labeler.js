@@ -31,69 +31,12 @@ aria.isHidden = function(ele){
 
 aria.keepTrack = function(ele){
 
-// Placeholder for future watch method;
-
-    return;
-};
-
-/**
- * @fileOverview This is the Config file for ARIA-labeller, where we call all the plugins.
- * @author Gagandeep Singh <robi_osahan@yahoo.com>
- * @version 1.0.0
- */
-
-aria.applyLabels  = function(options){
-
-        aria._anchor();
-        // aria._area(options);
-        aria._article();
-        aria._aside();
-        aria._body();
-        aria._button();
-        aria._datalist();
-        aria._details();
-        aria._dialog();
-        aria._dl();
-        aria._form();
-        aria._h1();
-        aria._h2();
-        aria._h3();
-        aria._h4();
-        aria._h5();
-        aria._h6();
-        aria._header();
-        aria._hr();
-        aria._img();
-        aria._input();
-        aria._li();
-        aria._link();
-        aria._main();
-        aria._menu();
-        aria._menuitem();
-        aria._meter();
-        aria._nav();
-        aria._ol();
-        aria._option();
-        aria._output();
-        aria._section();
-        aria._select();
-        aria._tbody();
-        aria._textarea();
-        aria._tfoot();
-        aria._thead();
-        aria._ul();
-
-    };
-
-
-
-aria.observeMutation  = function(){
-
     var observer = new MutationObserver(function(mutations) {
+console.log ( mutations );
       mutations.forEach(function(mutation) {
         console.log(mutation.type);
-        // $(this.currentSelector[0]).aria();
       });
+      // Need to write a logic based on what got changed
         aria.applyLabels();
     });
 
@@ -102,12 +45,64 @@ aria.observeMutation  = function(){
         childList: true,
         characterData: true
     });
+};
+
+/**
+ * @fileOverview This is the Config file for ARIA-labeller, where we call all the plugins.
+ * @author Gagandeep Singh <robi_osahan@yahoo.com>
+ * @version 1.0.0
+ */
+
+aria.applyLabels  = function(scope, options){
+
+    var eleGroups = [
+        "_anchor",
+        "_article",
+        "_aside",
+        "_body",
+        "_button",
+        "_datalist",
+        "_details",
+        "_dialog",
+        "_dl",
+        "_form",
+        "_h1",
+        "_h2",
+        "_h3",
+        "_h4",
+        "_h5",
+        "_h6",
+        "_header",
+        "_hr",
+        "_img",
+        "_input",
+        "_li",
+        "_link",
+        "_main",
+        "_menu",
+        "_menuitem",
+        "_meter",
+        "_nav",
+        "_ol",
+        "_option",
+        "_output",
+        "_section",
+        "_select",
+        "_tbody",
+        "_textarea",
+        "_tfoot",
+        "_thead",
+        "_ul"
+    ];
+
+    $.each(eleGroups, function(index, val) {
+         aria[val](scope, options);
+    });
 
 };
 
 
 $.fn.aria = function( options ){
-   // console.log( "this got fired ", this);
     aria.currentSelector = this;
 
     var  defaults = {
@@ -116,12 +111,10 @@ $.fn.aria = function( options ){
     settings = $.extend( {}, defaults, options );
 
     aria.applyLabels( settings );
-    aria.observeMutation();
+    aria.keepTrack();
 
     return this;
-
 };
-
 /**
  * @fileOverview anchor.js traverse throught DOM and assign ARIA labels.
  *
@@ -131,7 +124,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._anchor = function(options){
+    aria._anchor = function(scope, options){
 
         var ele = aria.currentSelector.find("a"),
             regex = /(^#|#$|\b^javascript:\b|\b^mailto:\b)/,
@@ -187,8 +180,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._article = function(){
-
+    aria._article = function(scope, options){
 
         var ele = aria.currentSelector.find("article"),
             self = this,
@@ -237,8 +229,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._aside = function(){
-
+    aria._aside = function(scope, options){
 
         var ele = aria.currentSelector.find("aside"),
             self = this,
@@ -286,8 +277,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._body = function(){
-
+    aria._body = function(scope, options){
 
         var ele = aria.currentSelector.find("body"),
             self = this,
@@ -335,8 +325,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._button = function(){
-
+    aria._button = function(scope, options){
 
         var ele = aria.currentSelector.find("button"),
             self = this,
@@ -384,8 +373,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._datalist = function(){
-
+    aria._datalist = function(scope, options){
 
         var ele = aria.currentSelector.find("datalist"),
             self = this,
@@ -433,8 +421,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._details = function(){
-
+    aria._details = function(scope, options){
 
         var ele = aria.currentSelector.find("details"),
             self = this,
@@ -482,7 +469,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._dialog = function(){
+    aria._dialog = function(scope, options){
 
         var ele = aria.currentSelector.find("dialog"),
             self = this,
@@ -530,8 +517,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._dl = function(){
-
+    aria._dl = function(scope, options){
 
         var ele = aria.currentSelector.find("dl"),
             self = this,
@@ -578,7 +564,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._footer = function(options){
+    aria._footer = function(scope, options){
 
         var ele = aria.currentSelector.find("footer"),
             self = this,
@@ -622,8 +608,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._form = function(options){
-
+    aria._form = function(scope, options){
 
         var ele = aria.currentSelector.find("form"),
             self = this,
@@ -671,8 +656,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h1 = function(){
-
+    aria._h1 = function(scope, options){
 
         var ele = aria.currentSelector.find("h1"),
             self = this,
@@ -720,8 +704,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h2 = function(options){
-
+    aria._h2 = function(scope, options){
 
         var ele = aria.currentSelector.find("h2"),
             self = this,
@@ -769,8 +752,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h3 = function(){
-
+    aria._h3 = function(scope, options){
 
         var ele = aria.currentSelector.find("h3"),
             labeler = {
@@ -817,8 +799,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h4 = function(){
-
+    aria._h4 = function(scope, options){
 
         var ele = aria.currentSelector.find("h4"),
             self = this,
@@ -866,8 +847,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h5 = function(){
-
+    aria._h5 = function(scope, options){
 
         var ele = aria.currentSelector.find("h5"),
             self = this,
@@ -915,8 +895,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h6 = function(){
-
+    aria._h6 = function(scope, options){
 
         var ele = aria.currentSelector.find("h6"),
             self = this,
@@ -960,7 +939,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._header = function(options){
+    aria._header = function(scope, options){
 
         var ele = aria.currentSelector.find("header"),
             self = this,
@@ -1002,8 +981,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._hr = function(){
-
+    aria._hr = function(scope, options){
 
         var ele = aria.currentSelector.find("hr"),
             self = this,
@@ -1051,8 +1029,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._img = function(){
-
+    aria._img = function(scope, options){
 
         var ele = aria.currentSelector.find("img"),
             self = this,
@@ -1127,8 +1104,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._input = function(){
-
+    aria._input = function(scope, options){
 
         var ele = aria.currentSelector.find("input"),
             labeler = {
@@ -1215,8 +1191,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._li = function(){
-
+    aria._li = function(scope, options){
 
         var ele = aria.currentSelector.find("li"),
             self = this,
@@ -1266,7 +1241,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._link = function(options){
+    aria._link = function(scope, options){
 
         var ele = aria.currentSelector.find("link"),
             // regex = /(^#|#$)/,
@@ -1315,7 +1290,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._main = function(options){
+    aria._main = function(scope, options){
 
         var ele = aria.currentSelector.find("main"),
             self = this,
@@ -1357,7 +1332,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._menu = function(options){
+    aria._menu = function(scope, options){
 
         var ele = aria.currentSelector.find("menu"),
             self = this,
@@ -1404,7 +1379,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._menuitem = function(options){
+    aria._menuitem = function(scope, options){
 
         var ele = aria.currentSelector.find("menuitem"),
             self = this,
@@ -1454,7 +1429,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._meter = function(options){
+    aria._meter = function(scope, options){
 
         var ele = aria.currentSelector.find("meter"),
             self = this,
@@ -1501,7 +1476,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._nav = function(options){
+    aria._nav = function(scope, options){
 
         var ele = aria.currentSelector.find("nav"),
             self = this,
@@ -1547,8 +1522,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._ol = function(){
-
+    aria._ol = function(scope, options){
 
         var ele = aria.currentSelector.find("ol"),
             self = this,
@@ -1595,8 +1569,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._option = function(){
-
+    aria._option = function(scope, options){
 
         var ele = aria.currentSelector.find("option"),
             self = this,
@@ -1646,7 +1619,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._output = function(options){
+    aria._output = function(scope, options){
 
         var ele = aria.currentSelector.find("output"),
             self = this,
@@ -1692,7 +1665,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._section = function(options){
+    aria._section = function(scope, options){
 
         var ele = aria.currentSelector.find("section"),
             self = this,
@@ -1738,7 +1711,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._select = function(options){
+    aria._select = function(scope, options){
 
         var ele = aria.currentSelector.find("select"),
             self = this,
@@ -1790,7 +1763,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._tbody = function(options){
+    aria._tbody = function(scope, options){
 
         var ele = aria.currentSelector.find("tbody"),
             // regex = /(^#|#$)/,
@@ -1837,7 +1810,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._textarea = function(options){
+    aria._textarea = function(scope, options){
 
         var ele = aria.currentSelector.find("textarea"),
             // regex = /(^#|#$)/,
@@ -1884,7 +1857,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._tfoot = function(options){
+    aria._tfoot = function(scope, options){
 
         var ele = aria.currentSelector.find("tfoot"),
             // regex = /(^#|#$)/,
@@ -1931,7 +1904,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._thead = function(options){
+    aria._thead = function(scope, options){
 
         var ele = aria.currentSelector.find("thead"),
             // regex = /(^#|#$)/,
@@ -1979,7 +1952,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._ul = function(){
+    aria._ul = function(scope, options){
 
 
         var ele = aria.currentSelector.find("ul"),
