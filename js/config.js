@@ -4,65 +4,50 @@
  * @version 1.0.0
  */
 
-aria.applyLabels  = function(options){
+aria.applyLabels  = function(scope, options){
 
-        aria._anchor();
-        // aria._area(options);
-        aria._article();
-        aria._aside();
-        aria._body();
-        aria._button();
-        aria._datalist();
-        aria._details();
-        aria._dialog();
-        aria._dl();
-        aria._form();
-        aria._h1();
-        aria._h2();
-        aria._h3();
-        aria._h4();
-        aria._h5();
-        aria._h6();
-        aria._header();
-        aria._hr();
-        aria._img();
-        aria._input();
-        aria._li();
-        aria._link();
-        aria._main();
-        aria._menu();
-        aria._menuitem();
-        aria._meter();
-        aria._nav();
-        aria._ol();
-        aria._option();
-        aria._output();
-        aria._section();
-        aria._select();
-        aria._tbody();
-        aria._textarea();
-        aria._tfoot();
-        aria._thead();
-        aria._ul();
+    var eleGroups = [
+        "_anchor",
+        "_article",
+        "_aside",
+        "_body",
+        "_button",
+        "_datalist",
+        "_details",
+        "_dialog",
+        "_dl",
+        "_form",
+        "_h1",
+        "_h2",
+        "_h3",
+        "_h4",
+        "_h5",
+        "_h6",
+        "_header",
+        "_hr",
+        "_img",
+        "_input",
+        "_li",
+        "_link",
+        "_main",
+        "_menu",
+        "_menuitem",
+        "_meter",
+        "_nav",
+        "_ol",
+        "_option",
+        "_output",
+        "_section",
+        "_select",
+        "_tbody",
+        "_textarea",
+        "_tfoot",
+        "_thead",
+        "_ul"
+    ];
 
-    };
-
-
-
-aria.observeMutation  = function(){
-
-    var observer = new MutationObserver(function(mutations) {
-      // mutations.forEach(function(mutation) {
-      //   console.log(mutation.type);
-      // });
-      // Need to write a logic based on what got changed
-        aria.applyLabels();
-    });
-
-    observer.observe(this.currentSelector[0], {
-        attributes: true,
-        childList: true,
-        characterData: true
+    $.each(eleGroups, function(index, val) {
+         aria[val](scope, options);
     });
 
 };
@@ -77,7 +62,7 @@ $.fn.aria = function( options ){
     settings = $.extend( {}, defaults, options );
 
     aria.applyLabels( settings );
-    aria.observeMutation();
+    aria.keepTrack();
 
     return this;
 };
