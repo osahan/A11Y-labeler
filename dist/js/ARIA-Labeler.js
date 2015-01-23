@@ -32,10 +32,6 @@ aria.isHidden = function(ele){
 aria.keepTrack = function(ele){
 
     var observer = new MutationObserver(function(mutations) {
-console.log ( mutations );
-      mutations.forEach(function(mutation) {
-        console.log(mutation.type);
-      });
       // Need to write a logic based on what got changed
         aria.applyLabels();
     });
