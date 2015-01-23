@@ -31,7 +31,14 @@ aria.isHidden = function(ele){
 
 aria.keepTrack = function(ele){
 
-// Placeholder for future watch method;
+    var observer = new MutationObserver(function(mutations) {
+      // Need to write a logic based on what got changed
+        aria.applyLabels();
+    });
 
-    return;
+    observer.observe(this.currentSelector[0], {
+        attributes: true,
+        childList: true,
+        characterData: true
+    });
 };
