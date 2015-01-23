@@ -56,12 +56,10 @@ aria.applyLabels  = function(scope, options){
 $.fn.aria = function( options ){
     aria.currentSelector = this;
 
-    var  defaults = {
-        
-    },
+    var  defaults = aria.options,
     settings = $.extend( {}, defaults, options );
 
-    aria.applyLabels( settings );
+    aria.applyLabels(this,  settings );
     aria.keepTrack();
 
     return this;
