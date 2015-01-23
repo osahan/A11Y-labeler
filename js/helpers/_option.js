@@ -9,7 +9,7 @@
 
     aria._option = function(scope, options){
 
-        var ele = aria.currentSelector.find("option"),
+        var ele = scope.find("option"),
             self = this,
             labeler = {
 

@@ -9,7 +9,7 @@
 
     aria._img = function(scope, options){
 
-        var ele = aria.currentSelector.find("img"),
+        var ele = scope.find("img"),
             self = this,
             labeler = {
 

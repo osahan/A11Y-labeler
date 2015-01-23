@@ -9,7 +9,7 @@
 
     aria._form = function(scope, options){
 
-        var ele = aria.currentSelector.find("form"),
+        var ele = scope.find("form"),
             self = this,
             labeler = {
 

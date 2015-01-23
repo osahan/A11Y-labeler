@@ -9,7 +9,7 @@
 
     aria._link = function(scope, options){
 
-        var ele = aria.currentSelector.find("link"),
+        var ele = scope.find("link"),
             // regex = /(^#|#$)/,
             self = this,
             labeler = {

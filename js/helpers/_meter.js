@@ -9,7 +9,7 @@
 
     aria._meter = function(scope, options){
 
-        var ele = aria.currentSelector.find("meter"),
+        var ele = scope.find("meter"),
             self = this,
             labeler = {
 

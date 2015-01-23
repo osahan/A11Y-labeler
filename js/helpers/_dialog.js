@@ -9,7 +9,7 @@
 
     aria._dialog = function(scope, options){
 
-        var ele = aria.currentSelector.find("dialog"),
+        var ele = scope.find("dialog"),
             self = this,
             labeler = {
 

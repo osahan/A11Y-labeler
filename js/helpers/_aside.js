@@ -9,7 +9,7 @@
 
     aria._aside = function(scope, options){
 
-        var ele = aria.currentSelector.find("aside"),
+        var ele = scope.find("aside"),
             self = this,
             labeler = {
 

@@ -9,7 +9,7 @@
 
     aria._article = function(scope, options){
 
-        var ele = aria.currentSelector.find("article"),
+        var ele = scope.find("article"),
             self = this,
             labeler = {
 

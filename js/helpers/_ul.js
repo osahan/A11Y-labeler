@@ -10,7 +10,7 @@
     aria._ul = function(scope, options){
 
 
-        var ele = aria.currentSelector.find("ul"),
+        var ele = scope.find("ul"),
             self = this,
             labeler = {
 

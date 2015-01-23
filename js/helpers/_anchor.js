@@ -9,7 +9,7 @@
 
     aria._anchor = function(scope, options){
 
-        var ele = aria.currentSelector.find("a"),
+        var ele = scope.find("a"),
             regex = /(^#|#$|\b^javascript:\b|\b^mailto:\b)/,
             self = this,
             labeler = {

@@ -9,7 +9,7 @@
 
     aria._menuitem = function(scope, options){
 
-        var ele = aria.currentSelector.find("menuitem"),
+        var ele = scope.find("menuitem"),
             self = this,
             labeler = {
 

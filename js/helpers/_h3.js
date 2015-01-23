@@ -9,7 +9,7 @@
 
     aria._h3 = function(scope, options){
 
-        var ele = aria.currentSelector.find("h3"),
+        var ele = scope.find("h3"),
             labeler = {
 
                 init: function(){

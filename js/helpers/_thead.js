@@ -9,7 +9,7 @@
 
     aria._thead = function(scope, options){
 
-        var ele = aria.currentSelector.find("thead"),
+        var ele = scope.find("thead"),
             // regex = /(^#|#$)/,
             self = this,
             labeler = {

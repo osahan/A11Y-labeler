@@ -9,7 +9,7 @@
 
     aria._tbody = function(scope, options){
 
-        var ele = aria.currentSelector.find("tbody"),
+        var ele = scope.find("tbody"),
             // regex = /(^#|#$)/,
             self = this,
             labeler = {

@@ -9,7 +9,7 @@
 
     aria._footer = function(scope, options){
 
-        var ele = aria.currentSelector.find("footer"),
+        var ele = scope.find("footer"),
             self = this,
             labeler = {
 

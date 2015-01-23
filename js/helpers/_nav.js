@@ -9,7 +9,7 @@
 
     aria._nav = function(scope, options){
 
-        var ele = aria.currentSelector.find("nav"),
+        var ele = scope.find("nav"),
             self = this,
             labeler = {
 

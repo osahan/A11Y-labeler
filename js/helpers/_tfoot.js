@@ -9,7 +9,7 @@
 
     aria._tfoot = function(scope, options){
 
-        var ele = aria.currentSelector.find("tfoot"),
+        var ele = scope.find("tfoot"),
             // regex = /(^#|#$)/,
             self = this,
             labeler = {

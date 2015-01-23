@@ -9,7 +9,7 @@
 
     aria._datalist = function(scope, options){
 
-        var ele = aria.currentSelector.find("datalist"),
+        var ele = scope.find("datalist"),
             self = this,
             labeler = {
 

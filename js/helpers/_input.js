@@ -9,7 +9,7 @@
 
     aria._input = function(scope, options){
 
-        var ele = aria.currentSelector.find("input"),
+        var ele = scope.find("input"),
             labeler = {
 
                 init: function(){

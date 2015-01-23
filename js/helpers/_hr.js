@@ -9,7 +9,7 @@
 
     aria._hr = function(scope, options){
 
-        var ele = aria.currentSelector.find("hr"),
+        var ele = scope.find("hr"),
             self = this,
             labeler = {
 

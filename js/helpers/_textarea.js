@@ -9,7 +9,7 @@
 
     aria._textarea = function(scope, options){
 
-        var ele = aria.currentSelector.find("textarea"),
+        var ele = scope.find("textarea"),
             // regex = /(^#|#$)/,
             self = this,
             labeler = {

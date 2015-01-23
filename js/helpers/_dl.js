@@ -9,7 +9,7 @@
 
     aria._dl = function(scope, options){
 
-        var ele = aria.currentSelector.find("dl"),
+        var ele = scope.find("dl"),
             self = this,
             labeler = {
 
