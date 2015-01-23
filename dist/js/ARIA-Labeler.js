@@ -32,8 +32,9 @@ aria.isHidden = function(ele){
 aria.keepTrack = function(ele){
 
     var observer = new MutationObserver(function(mutations) {
-      // Need to write a logic based on what got changed
-        aria.applyLabels();
+      var   scope = $(mutations[0].target),
+            options = aria.options;
+        aria.applyLabels(scope, options);
     });
 
     observer.observe(this.currentSelector[0], {
@@ -101,12 +102,10 @@ aria.applyLabels  = function(scope, options){
 $.fn.aria = function( options ){
     aria.currentSelector = this;
 
-    var  defaults = {
-        
-    },
+    var  defaults = aria.options,
     settings = $.extend( {}, defaults, options );
 
-    aria.applyLabels( settings );
+    aria.applyLabels(this,  settings );
     aria.keepTrack();
 
     return this;
@@ -122,7 +121,7 @@ $.fn.aria = function( options ){
 
     aria._anchor = function(scope, options){
 
-        var ele = aria.currentSelector.find("a"),
+        var ele = scope.find("a"),
             regex = /(^#|#$|\b^javascript:\b|\b^mailto:\b)/,
             self = this,
             labeler = {
@@ -178,7 +177,7 @@ $.fn.aria = function( options ){
 
     aria._article = function(scope, options){
 
-        var ele = aria.currentSelector.find("article"),
+        var ele = scope.find("article"),
             self = this,
             labeler = {
 
@@ -227,7 +226,7 @@ $.fn.aria = function( options ){
 
     aria._aside = function(scope, options){
 
-        var ele = aria.currentSelector.find("aside"),
+        var ele = scope.find("aside"),
             self = this,
             labeler = {
 
@@ -275,7 +274,7 @@ $.fn.aria = function( options ){
 
     aria._body = function(scope, options){
 
-        var ele = aria.currentSelector.find("body"),
+        var ele = scope.find("body"),
             self = this,
             labeler = {
 
@@ -323,7 +322,7 @@ $.fn.aria = function( options ){
 
     aria._button = function(scope, options){
 
-        var ele = aria.currentSelector.find("button"),
+        var ele = scope.find("button"),
             self = this,
             labeler = {
 
@@ -371,7 +370,7 @@ $.fn.aria = function( options ){
 
     aria._datalist = function(scope, options){
 
-        var ele = aria.currentSelector.find("datalist"),
+        var ele = scope.find("datalist"),
             self = this,
             labeler = {
 
@@ -419,7 +418,7 @@ $.fn.aria = function( options ){
 
     aria._details = function(scope, options){
 
-        var ele = aria.currentSelector.find("details"),
+        var ele = scope.find("details"),
             self = this,
             labeler = {
 
@@ -467,7 +466,7 @@ $.fn.aria = function( options ){
 
     aria._dialog = function(scope, options){
 
-        var ele = aria.currentSelector.find("dialog"),
+        var ele = scope.find("dialog"),
             self = this,
             labeler = {
 
@@ -515,7 +514,7 @@ $.fn.aria = function( options ){
 
     aria._dl = function(scope, options){
 
-        var ele = aria.currentSelector.find("dl"),
+        var ele = scope.find("dl"),
             self = this,
             labeler = {
 
@@ -562,7 +561,7 @@ $.fn.aria = function( options ){
 
     aria._footer = function(scope, options){
 
-        var ele = aria.currentSelector.find("footer"),
+        var ele = scope.find("footer"),
             self = this,
             labeler = {
 
@@ -606,7 +605,7 @@ $.fn.aria = function( options ){
 
     aria._form = function(scope, options){
 
-        var ele = aria.currentSelector.find("form"),
+        var ele = scope.find("form"),
             self = this,
             labeler = {
 
@@ -654,7 +653,7 @@ $.fn.aria = function( options ){
 
     aria._h1 = function(scope, options){
 
-        var ele = aria.currentSelector.find("h1"),
+        var ele = scope.find("h1"),
             self = this,
             labeler = {
 
@@ -702,7 +701,7 @@ $.fn.aria = function( options ){
 
     aria._h2 = function(scope, options){
 
-        var ele = aria.currentSelector.find("h2"),
+        var ele = scope.find("h2"),
             self = this,
             labeler = {
 
@@ -750,7 +749,7 @@ $.fn.aria = function( options ){
 
     aria._h3 = function(scope, options){
 
-        var ele = aria.currentSelector.find("h3"),
+        var ele = scope.find("h3"),
             labeler = {
 
                 init: function(){
@@ -797,7 +796,7 @@ $.fn.aria = function( options ){
 
     aria._h4 = function(scope, options){
 
-        var ele = aria.currentSelector.find("h4"),
+        var ele = scope.find("h4"),
             self = this,
             labeler = {
 
@@ -845,7 +844,7 @@ $.fn.aria = function( options ){
 
     aria._h5 = function(scope, options){
 
-        var ele = aria.currentSelector.find("h5"),
+        var ele = scope.find("h5"),
             self = this,
             labeler = {
 
@@ -893,7 +892,7 @@ $.fn.aria = function( options ){
 
     aria._h6 = function(scope, options){
 
-        var ele = aria.currentSelector.find("h6"),
+        var ele = scope.find("h6"),
             self = this,
             labeler = {
 
@@ -937,7 +936,7 @@ $.fn.aria = function( options ){
 
     aria._header = function(scope, options){
 
-        var ele = aria.currentSelector.find("header"),
+        var ele = scope.find("header"),
             self = this,
             labeler = {
 
@@ -979,7 +978,7 @@ $.fn.aria = function( options ){
 
     aria._hr = function(scope, options){
 
-        var ele = aria.currentSelector.find("hr"),
+        var ele = scope.find("hr"),
             self = this,
             labeler = {
 
@@ -1027,7 +1026,7 @@ $.fn.aria = function( options ){
 
     aria._img = function(scope, options){
 
-        var ele = aria.currentSelector.find("img"),
+        var ele = scope.find("img"),
             self = this,
             labeler = {
 
@@ -1102,7 +1101,7 @@ $.fn.aria = function( options ){
 
     aria._input = function(scope, options){
 
-        var ele = aria.currentSelector.find("input"),
+        var ele = scope.find("input"),
             labeler = {
 
                 init: function(){
@@ -1189,7 +1188,7 @@ $.fn.aria = function( options ){
 
     aria._li = function(scope, options){
 
-        var ele = aria.currentSelector.find("li"),
+        var ele = scope.find("li"),
             self = this,
             labeler = {
 
@@ -1239,7 +1238,7 @@ $.fn.aria = function( options ){
 
     aria._link = function(scope, options){
 
-        var ele = aria.currentSelector.find("link"),
+        var ele = scope.find("link"),
             // regex = /(^#|#$)/,
             self = this,
             labeler = {
@@ -1288,7 +1287,7 @@ $.fn.aria = function( options ){
 
     aria._main = function(scope, options){
 
-        var ele = aria.currentSelector.find("main"),
+        var ele = scope.find("main"),
             self = this,
             labeler = {
 
@@ -1330,7 +1329,7 @@ $.fn.aria = function( options ){
 
     aria._menu = function(scope, options){
 
-        var ele = aria.currentSelector.find("menu"),
+        var ele = scope.find("menu"),
             self = this,
             labeler = {
 
@@ -1377,7 +1376,7 @@ $.fn.aria = function( options ){
 
     aria._menuitem = function(scope, options){
 
-        var ele = aria.currentSelector.find("menuitem"),
+        var ele = scope.find("menuitem"),
             self = this,
             labeler = {
 
@@ -1427,7 +1426,7 @@ $.fn.aria = function( options ){
 
     aria._meter = function(scope, options){
 
-        var ele = aria.currentSelector.find("meter"),
+        var ele = scope.find("meter"),
             self = this,
             labeler = {
 
@@ -1474,7 +1473,7 @@ $.fn.aria = function( options ){
 
     aria._nav = function(scope, options){
 
-        var ele = aria.currentSelector.find("nav"),
+        var ele = scope.find("nav"),
             self = this,
             labeler = {
 
@@ -1520,7 +1519,7 @@ $.fn.aria = function( options ){
 
     aria._ol = function(scope, options){
 
-        var ele = aria.currentSelector.find("ol"),
+        var ele = scope.find("ol"),
             self = this,
             labeler = {
 
@@ -1567,7 +1566,7 @@ $.fn.aria = function( options ){
 
     aria._option = function(scope, options){
 
-        var ele = aria.currentSelector.find("option"),
+        var ele = scope.find("option"),
             self = this,
             labeler = {
 
@@ -1617,7 +1616,7 @@ $.fn.aria = function( options ){
 
     aria._output = function(scope, options){
 
-        var ele = aria.currentSelector.find("output"),
+        var ele = scope.find("output"),
             self = this,
             labeler = {
 
@@ -1663,7 +1662,7 @@ $.fn.aria = function( options ){
 
     aria._section = function(scope, options){
 
-        var ele = aria.currentSelector.find("section"),
+        var ele = scope.find("section"),
             self = this,
             labeler = {
 
@@ -1709,7 +1708,7 @@ $.fn.aria = function( options ){
 
     aria._select = function(scope, options){
 
-        var ele = aria.currentSelector.find("select"),
+        var ele = scope.find("select"),
             self = this,
             labeler = {
 
@@ -1761,7 +1760,7 @@ $.fn.aria = function( options ){
 
     aria._tbody = function(scope, options){
 
-        var ele = aria.currentSelector.find("tbody"),
+        var ele = scope.find("tbody"),
             // regex = /(^#|#$)/,
             self = this,
             labeler = {
@@ -1808,7 +1807,7 @@ $.fn.aria = function( options ){
 
     aria._textarea = function(scope, options){
 
-        var ele = aria.currentSelector.find("textarea"),
+        var ele = scope.find("textarea"),
             // regex = /(^#|#$)/,
             self = this,
             labeler = {
@@ -1855,7 +1854,7 @@ $.fn.aria = function( options ){
 
     aria._tfoot = function(scope, options){
 
-        var ele = aria.currentSelector.find("tfoot"),
+        var ele = scope.find("tfoot"),
             // regex = /(^#|#$)/,
             self = this,
             labeler = {
@@ -1902,7 +1901,7 @@ $.fn.aria = function( options ){
 
     aria._thead = function(scope, options){
 
-        var ele = aria.currentSelector.find("thead"),
+        var ele = scope.find("thead"),
             // regex = /(^#|#$)/,
             self = this,
             labeler = {
@@ -1951,7 +1950,7 @@ $.fn.aria = function( options ){
     aria._ul = function(scope, options){
 
 
-        var ele = aria.currentSelector.find("ul"),
+        var ele = scope.find("ul"),
             self = this,
             labeler = {
 
