@@ -32,8 +32,9 @@ aria.isHidden = function(ele){
 aria.keepTrack = function(ele){
 
     var observer = new MutationObserver(function(mutations) {
-      // Need to write a logic based on what got changed
-        aria.applyLabels();
+      var   scope = $(mutations[0].target),
+            options = aria.options;
+        aria.applyLabels(scope, options);
     });
 
     observer.observe(this.currentSelector[0], {
