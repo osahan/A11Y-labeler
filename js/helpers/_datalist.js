@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._datalist = function(){
-
+    aria._datalist = function(scope, options){
 
         var ele = aria.currentSelector.find("datalist"),
             self = this,

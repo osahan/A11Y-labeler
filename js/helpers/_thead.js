@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._thead = function(options){
+    aria._thead = function(scope, options){
 
         var ele = aria.currentSelector.find("thead"),
             // regex = /(^#|#$)/,

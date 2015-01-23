@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._body = function(){
-
+    aria._body = function(scope, options){
 
         var ele = aria.currentSelector.find("body"),
             self = this,

@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._link = function(options){
+    aria._link = function(scope, options){
 
         var ele = aria.currentSelector.find("link"),
             // regex = /(^#|#$)/,

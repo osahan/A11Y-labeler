@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._li = function(){
-
+    aria._li = function(scope, options){
 
         var ele = aria.currentSelector.find("li"),
             self = this,

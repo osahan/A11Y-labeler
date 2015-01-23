@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._tfoot = function(options){
+    aria._tfoot = function(scope, options){
 
         var ele = aria.currentSelector.find("tfoot"),
             // regex = /(^#|#$)/,

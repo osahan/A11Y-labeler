@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._h1 = function(){
-
+    aria._h1 = function(scope, options){
 
         var ele = aria.currentSelector.find("h1"),
             self = this,

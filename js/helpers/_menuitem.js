@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._menuitem = function(options){
+    aria._menuitem = function(scope, options){
 
         var ele = aria.currentSelector.find("menuitem"),
             self = this,

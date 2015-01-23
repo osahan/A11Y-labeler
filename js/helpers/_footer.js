@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._footer = function(options){
+    aria._footer = function(scope, options){
 
         var ele = aria.currentSelector.find("footer"),
             self = this,

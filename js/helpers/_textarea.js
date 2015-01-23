@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._textarea = function(options){
+    aria._textarea = function(scope, options){
 
         var ele = aria.currentSelector.find("textarea"),
             // regex = /(^#|#$)/,

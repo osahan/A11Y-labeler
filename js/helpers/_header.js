@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._header = function(options){
+    aria._header = function(scope, options){
 
         var ele = aria.currentSelector.find("header"),
             self = this,

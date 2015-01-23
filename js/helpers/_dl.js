@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._dl = function(){
-
+    aria._dl = function(scope, options){
 
         var ele = aria.currentSelector.find("dl"),
             self = this,

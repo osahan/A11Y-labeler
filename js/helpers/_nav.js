@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._nav = function(options){
+    aria._nav = function(scope, options){
 
         var ele = aria.currentSelector.find("nav"),
             self = this,

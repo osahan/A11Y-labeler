@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._aside = function(){
-
+    aria._aside = function(scope, options){
 
         var ele = aria.currentSelector.find("aside"),
             self = this,

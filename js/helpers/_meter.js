@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._meter = function(options){
+    aria._meter = function(scope, options){
 
         var ele = aria.currentSelector.find("meter"),
             self = this,

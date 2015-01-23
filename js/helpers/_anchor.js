@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._anchor = function(options){
+    aria._anchor = function(scope, options){
 
         var ele = aria.currentSelector.find("a"),
             regex = /(^#|#$|\b^javascript:\b|\b^mailto:\b)/,

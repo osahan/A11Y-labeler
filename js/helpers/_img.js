@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._img = function(){
-
+    aria._img = function(scope, options){
 
         var ele = aria.currentSelector.find("img"),
             self = this,

@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._input = function(){
-
+    aria._input = function(scope, options){
 
         var ele = aria.currentSelector.find("input"),
             labeler = {

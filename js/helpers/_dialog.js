@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._dialog = function(){
+    aria._dialog = function(scope, options){
 
         var ele = aria.currentSelector.find("dialog"),
             self = this,

@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._ol = function(){
-
+    aria._ol = function(scope, options){
 
         var ele = aria.currentSelector.find("ol"),
             self = this,

@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._section = function(options){
+    aria._section = function(scope, options){
 
         var ele = aria.currentSelector.find("section"),
             self = this,

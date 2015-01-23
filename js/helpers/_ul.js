@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._ul = function(){
+    aria._ul = function(scope, options){
 
 
         var ele = aria.currentSelector.find("ul"),

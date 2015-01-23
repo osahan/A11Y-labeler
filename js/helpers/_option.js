@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._option = function(){
-
+    aria._option = function(scope, options){
 
         var ele = aria.currentSelector.find("option"),
             self = this,

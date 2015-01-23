@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._form = function(options){
-
+    aria._form = function(scope, options){
 
         var ele = aria.currentSelector.find("form"),
             self = this,

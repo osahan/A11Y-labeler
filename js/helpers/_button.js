@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._button = function(){
-
+    aria._button = function(scope, options){
 
         var ele = aria.currentSelector.find("button"),
             self = this,

@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._hr = function(){
-
+    aria._hr = function(scope, options){
 
         var ele = aria.currentSelector.find("hr"),
             self = this,

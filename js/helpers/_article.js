@@ -7,8 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._article = function(){
-
+    aria._article = function(scope, options){
 
         var ele = aria.currentSelector.find("article"),
             self = this,
