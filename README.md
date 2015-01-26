@@ -31,7 +31,7 @@ Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Lab
 ```
 **After**
 ```html
-<a href="http://www.example.com" role="link">anchor with pre-defined role</a>
+<a href="http://www.example.com" role="link">anchor with pre-defined role</a> // will not overwrite predefined roles
 
 <a href="http://www.example.com" role="link">anchor with href</a>
 
