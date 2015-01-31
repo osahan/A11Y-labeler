@@ -1,5 +1,5 @@
 /**
- * @fileOverview _select.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _select.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._select = function(scope, options){
+    a11y._select = function(scope, options){
 
         var ele = scope.find("select"),
             self = this,
@@ -33,11 +33,11 @@
 
                          if(multiple && typeof role === "undefined"){
                             $this.attr("role", "listbox");
-                            $this.attr("aria-multiselectable","true");
+                            $this.attr("a11y-multiselectable","true");
                          } 
                          else if(!multiple && typeof role === "undefined"){
                             $this.attr("role", "listbox");
-                            $this.attr("aria-multiselectable","false");
+                            $this.attr("a11y-multiselectable","false");
                          } 
 
                     });

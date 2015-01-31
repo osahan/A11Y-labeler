@@ -1,5 +1,5 @@
 /**
- * @fileOverview _main.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _main.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._main = function(scope, options){
+    a11y._main = function(scope, options){
 
         var ele = scope.find("main"),
             self = this,

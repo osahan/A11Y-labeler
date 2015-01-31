@@ -1,5 +1,5 @@
 /**
- * @fileOverview _img.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _img.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._img = function(scope, options){
+    a11y._img = function(scope, options){
 
         var ele = scope.find("img"),
             self = this,

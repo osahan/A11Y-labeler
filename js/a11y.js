@@ -1,27 +1,27 @@
 /**
- * @fileOverview This is the top-level file for ARIA-labeller.
+ * @fileOverview This is the top-level file for a11y-labeller.
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
  */
 
-var aria = window.aria || {};
+var a11y = window.a11y || {};
 
-aria.version = '1.0.0';
+a11y.version = '1.0.0';
 
-aria.options = {
+a11y.options = {
     role: true,
     label: true
 };
 
-aria.hiddenElements = [];
+a11y.hiddenElements = [];
 
-aria.setOptions = function(options){
-    options.role = options.role || aria.options.role;
-    options.label = options.label || aria.options.label;
+a11y.setOptions = function(options){
+    options.role = options.role || a11y.options.role;
+    options.label = options.label || a11y.options.label;
     return options;
 };
 
-aria.isHidden = function(ele){
+a11y.isHidden = function(ele){
 
     if( ele.css("display") === "none" ){
         this.hiddenElements.push(ele);
@@ -29,12 +29,12 @@ aria.isHidden = function(ele){
 
 };
 
-aria.keepTrack = function(ele){
+a11y.keepTrack = function(ele){
 
     var observer = new MutationObserver(function(mutations) {
       var   scope = $(mutations[0].target),
-            options = aria.options;
-        aria.applyLabels(scope, options);
+            options = a11y.options;
+        a11y.applyLabels(scope, options);
     });
 
     observer.observe(this.currentSelector[0], {

@@ -1,5 +1,5 @@
 /**
- * @fileOverview _header.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _header.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -7,7 +7,7 @@
 
 (function(window, $, undefined){
 
-    aria._header = function(scope, options){
+    a11y._header = function(scope, options){
 
         var ele = scope.find("header"),
             self = this,
