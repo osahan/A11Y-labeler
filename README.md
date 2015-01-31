@@ -1,14 +1,14 @@
-ARIA-Labeler
+A11Y-labeler
 ============
 IN PROGRESS...
 
-A Lightweight jQuery Plugin that assigns right role and ARIA label on DOM elements
+A Lightweight jQuery Plugin that assigns ARIA roles and label on DOM elements
 
 ## Installation
-Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Labeler.min.js` just before `</body>` of your HTML document:
+Include the latest version of [jQuery](http://jquery.com/download) and `A11Y-labeler.min.js` just before `</body>` of your HTML document:
 ```html
 <script src="jQuery.min.js"></script>  
-<script src="ARIA-Labeler.min.js"></script>
+<script src="dist/js/A11Y-labeler.min.js"></script>
 ```
 
 ## How to Use
@@ -16,7 +16,7 @@ Include the latest version of [jQuery](http://jquery.com/download) and `ARIA-Lab
 **Syntax Example**  
 ```javascript
 
-    $("body").aria();
+    $("body").a11y();
 
 ```
 **Before**

@@ -1,7 +1,7 @@
 {
-  "name": "ARIA-Labeler",
+  "name": "A11Y-labeler",
   "version": "1.0.0",
-  "description": "ARIA Labeler, labels all element with ARIA labels on init ",
+  "description": "A11Y Labeler, labels all element with ARIA roles and labels",
   "homepage": "https://github.com/osahan/ARIA-Labeler",
   "main": "",
   "scripts": {
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/osahan/ARIA-Labeler.git"
+    "url": "https://github.com/osahan/A11Y-labeler.git"
   },
   "author": "Gagandeep Singh",
   "license": {
     "type": "MIT",
-    "url": "https://github.com/osahan/ARIA-Labeler/blob/master/LICENSE"
+    "url": "https://github.com/osahan/A11Y-labeler/blob/master/LICENSE"
   },
   "bugs": {
-    "url": "https://github.com/osahan/ARIA-Labeler/issues"
+    "url": "https://github.com/osahan/A11Y-labeler/issues"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
