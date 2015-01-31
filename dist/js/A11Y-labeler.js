@@ -1,27 +1,27 @@
 /**
- * @fileOverview This is the top-level file for ARIA-labeller.
+ * @fileOverview This is the top-level file for a11y-labeller.
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
  */
 
-var aria = window.aria || {};
+var a11y = window.a11y || {};
 
-aria.version = '1.0.0';
+a11y.version = '1.0.0';
 
-aria.options = {
+a11y.options = {
     role: true,
     label: true
 };
 
-aria.hiddenElements = [];
+a11y.hiddenElements = [];
 
-aria.setOptions = function(options){
-    options.role = options.role || aria.options.role;
-    options.label = options.label || aria.options.label;
+a11y.setOptions = function(options){
+    options.role = options.role || a11y.options.role;
+    options.label = options.label || a11y.options.label;
     return options;
 };
 
-aria.isHidden = function(ele){
+a11y.isHidden = function(ele){
 
     if( ele.css("display") === "none" ){
         this.hiddenElements.push(ele);
@@ -29,12 +29,12 @@ aria.isHidden = function(ele){
 
 };
 
-aria.keepTrack = function(ele){
+a11y.keepTrack = function(ele){
 
     var observer = new MutationObserver(function(mutations) {
       var   scope = $(mutations[0].target),
-            options = aria.options;
-        aria.applyLabels(scope, options);
+            options = a11y.options;
+        a11y.applyLabels(scope, options);
     });
 
     observer.observe(this.currentSelector[0], {
@@ -45,12 +45,12 @@ aria.keepTrack = function(ele){
 };
 
 /**
- * @fileOverview This is the Config file for ARIA-labeller, where we call all the plugins.
+ * @fileOverview This is the Config file for a11y-labeller, where we call all the plugins.
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
  */
 
-aria.applyLabels  = function(scope, options){
+a11y.applyLabels  = function(scope, options){
 
     var eleGroups = [
         "_anchor",
@@ -93,25 +93,25 @@ aria.applyLabels  = function(scope, options){
     ];
 
     $.each(eleGroups, function(index, val) {
-         aria[val](scope, options);
+         a11y[val](scope, options);
     });
 
 };
 
 
-$.fn.aria = function( options ){
-    aria.currentSelector = this;
+$.fn.a11y = function( options ){
+    a11y.currentSelector = this;
 
-    var  defaults = aria.options,
+    var  defaults = a11y.options,
     settings = $.extend( {}, defaults, options );
 
-    aria.applyLabels(this,  settings );
-    aria.keepTrack();
+    a11y.applyLabels(this,  settings );
+    a11y.keepTrack();
 
     return this;
 };
 /**
- * @fileOverview anchor.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview anchor.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -119,7 +119,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._anchor = function(scope, options){
+    a11y._anchor = function(scope, options){
 
         var ele = scope.find("a"),
             regex = /(^#|#$|\b^javascript:\b|\b^mailto:\b)/,
@@ -167,7 +167,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _article.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _article.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -175,7 +175,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._article = function(scope, options){
+    a11y._article = function(scope, options){
 
         var ele = scope.find("article"),
             self = this,
@@ -216,7 +216,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _aside.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _aside.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -224,7 +224,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._aside = function(scope, options){
+    a11y._aside = function(scope, options){
 
         var ele = scope.find("aside"),
             self = this,
@@ -264,7 +264,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _body.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _body.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -272,7 +272,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._body = function(scope, options){
+    a11y._body = function(scope, options){
 
         var ele = scope.find("body"),
             self = this,
@@ -312,7 +312,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _button.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _button.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -320,7 +320,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._button = function(scope, options){
+    a11y._button = function(scope, options){
 
         var ele = scope.find("button"),
             self = this,
@@ -360,7 +360,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _datalist.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _datalist.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -368,7 +368,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._datalist = function(scope, options){
+    a11y._datalist = function(scope, options){
 
         var ele = scope.find("datalist"),
             self = this,
@@ -408,7 +408,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _details.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _details.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -416,7 +416,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._details = function(scope, options){
+    a11y._details = function(scope, options){
 
         var ele = scope.find("details"),
             self = this,
@@ -456,7 +456,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _dialog.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _dialog.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -464,7 +464,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._dialog = function(scope, options){
+    a11y._dialog = function(scope, options){
 
         var ele = scope.find("dialog"),
             self = this,
@@ -504,7 +504,7 @@ $.fn.aria = function( options ){
 })(this, jQuery);
 
 /**
- * @fileOverview _dl.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _dl.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -512,7 +512,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._dl = function(scope, options){
+    a11y._dl = function(scope, options){
 
         var ele = scope.find("dl"),
             self = this,
@@ -551,7 +551,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _footer.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _footer.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -559,7 +559,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._footer = function(scope, options){
+    a11y._footer = function(scope, options){
 
         var ele = scope.find("footer"),
             self = this,
@@ -595,7 +595,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _form.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _form.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -603,7 +603,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._form = function(scope, options){
+    a11y._form = function(scope, options){
 
         var ele = scope.find("form"),
             self = this,
@@ -643,7 +643,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _h1.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _h1.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -651,7 +651,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h1 = function(scope, options){
+    a11y._h1 = function(scope, options){
 
         var ele = scope.find("h1"),
             self = this,
@@ -691,7 +691,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _h2.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _h2.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -699,7 +699,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h2 = function(scope, options){
+    a11y._h2 = function(scope, options){
 
         var ele = scope.find("h2"),
             self = this,
@@ -739,7 +739,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _h3.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _h3.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -747,7 +747,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h3 = function(scope, options){
+    a11y._h3 = function(scope, options){
 
         var ele = scope.find("h3"),
             labeler = {
@@ -786,7 +786,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _h4.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _h4.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -794,7 +794,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h4 = function(scope, options){
+    a11y._h4 = function(scope, options){
 
         var ele = scope.find("h4"),
             self = this,
@@ -834,7 +834,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _h5.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _h5.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -842,7 +842,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h5 = function(scope, options){
+    a11y._h5 = function(scope, options){
 
         var ele = scope.find("h5"),
             self = this,
@@ -882,7 +882,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview area.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -890,7 +890,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._h6 = function(scope, options){
+    a11y._h6 = function(scope, options){
 
         var ele = scope.find("h6"),
             self = this,
@@ -926,7 +926,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _header.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _header.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -934,7 +934,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._header = function(scope, options){
+    a11y._header = function(scope, options){
 
         var ele = scope.find("header"),
             self = this,
@@ -968,7 +968,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _hr.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _hr.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -976,7 +976,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._hr = function(scope, options){
+    a11y._hr = function(scope, options){
 
         var ele = scope.find("hr"),
             self = this,
@@ -1016,7 +1016,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _img.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _img.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1024,7 +1024,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._img = function(scope, options){
+    a11y._img = function(scope, options){
 
         var ele = scope.find("img"),
             self = this,
@@ -1091,7 +1091,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview area.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview area.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1099,7 +1099,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._input = function(scope, options){
+    a11y._input = function(scope, options){
 
         var ele = scope.find("input"),
             labeler = {
@@ -1178,7 +1178,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _li.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _li.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1186,7 +1186,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._li = function(scope, options){
+    a11y._li = function(scope, options){
 
         var ele = scope.find("li"),
             self = this,
@@ -1228,7 +1228,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _link.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _link.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1236,7 +1236,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._link = function(scope, options){
+    a11y._link = function(scope, options){
 
         var ele = scope.find("link"),
             // regex = /(^#|#$)/,
@@ -1277,7 +1277,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _main.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _main.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1285,7 +1285,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._main = function(scope, options){
+    a11y._main = function(scope, options){
 
         var ele = scope.find("main"),
             self = this,
@@ -1319,7 +1319,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _main.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _main.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1327,7 +1327,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._menu = function(scope, options){
+    a11y._menu = function(scope, options){
 
         var ele = scope.find("menu"),
             self = this,
@@ -1366,7 +1366,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _menuitem.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _menuitem.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1374,7 +1374,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._menuitem = function(scope, options){
+    a11y._menuitem = function(scope, options){
 
         var ele = scope.find("menuitem"),
             self = this,
@@ -1416,7 +1416,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _meter.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _meter.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1424,7 +1424,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._meter = function(scope, options){
+    a11y._meter = function(scope, options){
 
         var ele = scope.find("meter"),
             self = this,
@@ -1463,7 +1463,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _meter.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _meter.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1471,7 +1471,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._nav = function(scope, options){
+    a11y._nav = function(scope, options){
 
         var ele = scope.find("nav"),
             self = this,
@@ -1509,7 +1509,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _ol.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _ol.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1517,7 +1517,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._ol = function(scope, options){
+    a11y._ol = function(scope, options){
 
         var ele = scope.find("ol"),
             self = this,
@@ -1556,7 +1556,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _option.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _option.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1564,7 +1564,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._option = function(scope, options){
+    a11y._option = function(scope, options){
 
         var ele = scope.find("option"),
             self = this,
@@ -1606,7 +1606,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _output.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _output.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1614,7 +1614,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._output = function(scope, options){
+    a11y._output = function(scope, options){
 
         var ele = scope.find("output"),
             self = this,
@@ -1652,7 +1652,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _section.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _section.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1660,7 +1660,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._section = function(scope, options){
+    a11y._section = function(scope, options){
 
         var ele = scope.find("section"),
             self = this,
@@ -1698,7 +1698,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _select.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _select.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1706,7 +1706,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._select = function(scope, options){
+    a11y._select = function(scope, options){
 
         var ele = scope.find("select"),
             self = this,
@@ -1732,11 +1732,11 @@ $.fn.aria = function( options ){
 
                          if(multiple && typeof role === "undefined"){
                             $this.attr("role", "listbox");
-                            $this.attr("aria-multiselectable","true");
+                            $this.attr("a11y-multiselectable","true");
                          } 
                          else if(!multiple && typeof role === "undefined"){
                             $this.attr("role", "listbox");
-                            $this.attr("aria-multiselectable","false");
+                            $this.attr("a11y-multiselectable","false");
                          } 
 
                     });
@@ -1750,7 +1750,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _tbody.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _tbody.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1758,7 +1758,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._tbody = function(scope, options){
+    a11y._tbody = function(scope, options){
 
         var ele = scope.find("tbody"),
             // regex = /(^#|#$)/,
@@ -1797,7 +1797,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _textarea.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _textarea.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1805,7 +1805,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._textarea = function(scope, options){
+    a11y._textarea = function(scope, options){
 
         var ele = scope.find("textarea"),
             // regex = /(^#|#$)/,
@@ -1844,7 +1844,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _tfoot.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _tfoot.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1852,7 +1852,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._tfoot = function(scope, options){
+    a11y._tfoot = function(scope, options){
 
         var ele = scope.find("tfoot"),
             // regex = /(^#|#$)/,
@@ -1891,7 +1891,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _thead.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _thead.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1899,7 +1899,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._thead = function(scope, options){
+    a11y._thead = function(scope, options){
 
         var ele = scope.find("thead"),
             // regex = /(^#|#$)/,
@@ -1939,7 +1939,7 @@ $.fn.aria = function( options ){
 
 })(this, jQuery);
 /**
- * @fileOverview _ul.js traverse throught DOM and assign ARIA labels.
+ * @fileOverview _ul.js traverse throught DOM and assign a11y labels.
  *
  * @author Gagandeep Singh <robi_osahan@yahoo.com>
  * @version 1.0.0
@@ -1947,7 +1947,7 @@ $.fn.aria = function( options ){
 
 (function(window, $, undefined){
 
-    aria._ul = function(scope, options){
+    a11y._ul = function(scope, options){
 
 
         var ele = scope.find("ul"),
