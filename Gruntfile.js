@@ -45,7 +45,7 @@ module.exports = function(grunt) {
           'js/**/*.js',
           'js/config.js' // this needs to be the last item in this list
         ],
-        dest: 'dist/js/<%= pkg.name %>.js'
+        dest: 'dist/js/<%= pkg.name.toLowerCase() %>.js'
       }
     },
 
@@ -56,8 +56,8 @@ module.exports = function(grunt) {
         mangle: true
       },
       dist: {
-        src: 'dist/js/<%= pkg.name %>.js',
-        dest: 'dist/js/<%= pkg.name %>.min.js'
+        src: 'dist/js/<%= pkg.name.toLowerCase() %>.js',
+        dest: 'dist/js/<%= pkg.name.toLowerCase() %>.min.js'
       },
     },
 
