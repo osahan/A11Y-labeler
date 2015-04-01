@@ -4,7 +4,7 @@
       {
         "title": "Anchor",
         "visbileMarkup": "<code>a</code> element with a <code>href</code><br /><code>a</code> element with hash as a <code>href</code><br /><code>a</code> element without <code>href</code> <code class=\"comment\"> // no role will be assigned</code>",
-        "exampleMarkup": "<a href=\"http://www.example.com\" role=\"link\">a element with pre-defined role</a>\n\n <a href=\"http://www.example.com\">a element with a href</a>\n\n<a href=\"#\">a element with hash as a href</a>\n\n<a>a element without href</a>"
+        "exampleMarkup": "<a href=\"http://www.example.com\" role=\"link\">a element with pre-defined role</a>\n\n<a href=\"http://www.example.com\">a element with a href</a>\n\n<a href=\"#\">a element with hash as a href</a>\n\n<a>a element without href</a>"
       },
       {
         "title": "Article",
@@ -20,6 +20,161 @@
         "title": "Button",
         "visbileMarkup": "<code>button</code> element will get Roles: button, link, menuitem, menuitemcheckbox, menuitemradio or radio.",
         "exampleMarkup": "<button>This is a test aside note</button>"
+      },
+      {
+        "title": "Datalist",
+        "visbileMarkup": "<code>datalist</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Details",
+        "visbileMarkup": "<code>details</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Dialog",
+        "visbileMarkup": "<code>dialog</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "DL",
+        "visbileMarkup": "<code>dl</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Form",
+        "visbileMarkup": "<code>form</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "H1",
+        "visbileMarkup": "<code>h1</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "H2",
+        "visbileMarkup": "<code>h2</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "H3",
+        "visbileMarkup": "<code>h3</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "H4",
+        "visbileMarkup": "<code>h4</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "H5",
+        "visbileMarkup": "<code>h5</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "H6",
+        "visbileMarkup": "<code>h6</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Header",
+        "visbileMarkup": "<code>header</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "HR",
+        "visbileMarkup": "<code>hr</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "IMG",
+        "visbileMarkup": "<code>img</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Input",
+        "visbileMarkup": "<code>input</code>",
+        "exampleMarkup": "<input type=\"text\" name=\"testinput\" />\n\n<input type=\"radio\" name=\"testradio\" />\n\n<input type=\"checkbox\" name=\"testcheckbox\" />\n\n"
+      },
+      {
+        "title": "LI",
+        "visbileMarkup": "<code>li</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Link",
+        "visbileMarkup": "<code>link</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Main",
+        "visbileMarkup": "<code>main</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Menu",
+        "visbileMarkup": "<code>menu</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Menuitem",
+        "visbileMarkup": "<code>menuitem</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Meter",
+        "visbileMarkup": "<code>meter</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Nav",
+        "visbileMarkup": "<code>nav</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "OL",
+        "visbileMarkup": "<code>ol</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Option",
+        "visbileMarkup": "<code>option</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Output",
+        "visbileMarkup": "<code>output</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Section",
+        "visbileMarkup": "<code>section</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "tbody",
+        "visbileMarkup": "<code>tbody</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Textarea",
+        "visbileMarkup": "<code>textarea</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Tfoot",
+        "visbileMarkup": "<code>tfoot</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Thead",
+        "visbileMarkup": "<code>thead</code>",
+        "exampleMarkup": ""
+      },
+      {
+        "title": "Ul",
+        "visbileMarkup": "<code>ul</code>",
+        "exampleMarkup": ""
       }
     ]
 }   
