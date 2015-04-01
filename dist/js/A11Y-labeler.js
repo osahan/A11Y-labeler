@@ -23,9 +23,9 @@ a11y.setOptions = function(options){
 
 a11y.isHidden = function(ele){
 
-    if( ele.css("display") === "none" ){
-        this.hiddenElements.push(ele);
-    }
+    // if( ele.css("display") === "none" ){
+    //     this.hiddenElements.push(ele);
+    // }
 
 };
 
@@ -42,6 +42,20 @@ a11y.keepTrack = function(ele){
         childList: true,
         characterData: true
     });
+
+    this.checkStates( ele );
+
+};
+
+
+a11y.checkStates = function(ele){
+
+    // this.isHidden(ele);
+
+    // console.log( $(ele).is(":disabled") );
+
+    // console.log( $(ele).prop("aria-hidden") );
+// $("").is(":disabled")
 };
 
 /**
@@ -665,7 +679,7 @@ $.fn.a11y = function( options ){
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function() {
 
@@ -715,7 +729,7 @@ $.fn.a11y = function( options ){
 
                 assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
                       var $this = $(this),
                             role = $this.prop("role");
@@ -750,6 +764,7 @@ $.fn.a11y = function( options ){
     a11y._h3 = function(scope, options){
 
         var ele = scope.find("h3"),
+            self = this,
             labeler = {
 
                 init: function(){
@@ -1060,26 +1075,26 @@ $.fn.a11y = function( options ){
                             $this.attr("role", "presentation");
 
                         }
-                        else if( (eleType === "button" || eleType === "reset" || eleType === "submit" || eleType === "image") && typeof role === "undefined"){
+                        // else if( (eleType === "button" || eleType === "reset" || eleType === "submit" || eleType === "image") && typeof role === "undefined"){
 
-                            $this.attr("role", "button");
+                        //     $this.attr("role", "button");
 
-                        }
-                        else if( ( eleType === "email" || eleType === "password" ) && typeof role === "undefined"){
+                        // }
+                        // else if( ( eleType === "email" || eleType === "password" ) && typeof role === "undefined"){
 
-                            $this.attr("role", "textbox");
+                        //     $this.attr("role", "textbox");
 
-                        }
-                        else if(eleType === "radio" && typeof role === "undefined"){
+                        // }
+                        // else if(eleType === "radio" && typeof role === "undefined"){
 
-                            $this.attr("role", "radio");
+                        //     $this.attr("role", "radio");
 
-                        }
-                        else if(eleType === "range" && typeof role === "undefined"){
+                        // }
+                        // else if(eleType === "range" && typeof role === "undefined"){
 
-                            $this.attr("role", "slider");
+                        //     $this.attr("role", "slider");
 
-                        }
+                        // }
                     });
 
                 }
@@ -1102,6 +1117,7 @@ $.fn.a11y = function( options ){
     a11y._input = function(scope, options){
 
         var ele = scope.find("input"),
+            self = this,
             labeler = {
 
                 init: function(){
@@ -1114,6 +1130,7 @@ $.fn.a11y = function( options ){
 
                 assignLabels: function(){
 
+
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
@@ -1125,43 +1142,42 @@ $.fn.a11y = function( options ){
                             self.keepTrack( $this );
 
                         switch (eleType) {
-                            case button:
+                            case "button":
                                 roleType = "button";
                                 break;
-                            case email:
+                            case "email":
                                 roleType = (listAttr) ? "combobox" : "textbox";
                                 break;
-                            case image:
+                            case "image":
                                 roleType = "button";
                                 break;
-                            case password:
+                            case "password":
                                 roleType = "textbox";
                                 break;
-                            case radio:
+                            case "radio":
                                 roleType = "radio";
                                 break;
-                            case range:
+                            case "range":
                                 roleType = "slider";
                                 break;
-                            case reset:
+                            case "reset":
                                 roleType = "button";
                                 break;
-                            case submit:
+                            case "submit":
                                 roleType = "button";
                                 break;
-                            case tel:
+                            case "tel":
                                 roleType = (listAttr) ? "combobox" : "textbox";
                                 break;
-                            case text:
+                            case "text":
                                 roleType = (listAttr) ? "combobox" : "textbox";
                                 break;
-                            case search:
+                            case "search":
                                 roleType = (listAttr) ? "combobox" : "textbox";
                                 break;
-                            case url:
+                            case "url":
                                 roleType = (listAttr) ? "combobox" : "textbox";
                                 break;
-
 
                         }
 
@@ -1239,7 +1255,6 @@ $.fn.a11y = function( options ){
     a11y._link = function(scope, options){
 
         var ele = scope.find("link"),
-            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 
@@ -1446,7 +1461,6 @@ $.fn.a11y = function( options ){
                             role = $this.prop("role");
 
                             self.keepTrack( $this );
-
 
                          if(typeof role === "undefined"){
                             $this.attr("role", "progressbar");
@@ -1761,7 +1775,6 @@ $.fn.a11y = function( options ){
     a11y._tbody = function(scope, options){
 
         var ele = scope.find("tbody"),
-            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 
@@ -1808,7 +1821,6 @@ $.fn.a11y = function( options ){
     a11y._textarea = function(scope, options){
 
         var ele = scope.find("textarea"),
-            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 
@@ -1855,7 +1867,6 @@ $.fn.a11y = function( options ){
     a11y._tfoot = function(scope, options){
 
         var ele = scope.find("tfoot"),
-            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 
@@ -1902,7 +1913,6 @@ $.fn.a11y = function( options ){
     a11y._thead = function(scope, options){
 
         var ele = scope.find("thead"),
-            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 
