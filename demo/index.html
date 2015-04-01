@@ -45,22 +45,24 @@
 
 <div class="container">
 
-  <h2>Getting Started</h2>
-  <p>
-    Include the latest version of <a href="http://jquery.com/download/" target="_blank">jQuery</a>, and A11Y-labeler:
-  </p>
+    <h2>Getting Started</h2>
+        <p>
+            Include the latest version of <a href="http://jquery.com/download/" target="_blank">jQuery</a>, and A11Y-labeler:
+        </p>
 
-  <pre class="prettyprint">
+    <pre class="prettyprint">
 
-&lt;!-- jQuery (necessary for A11Y-labeler plugins) -->
+    &lt;!-- jQuery (necessary for A11Y-labeler plugins) -->
     &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">  &lt;/script>
 
-&lt;!-- Latest compiled and minified A11Y-labeler JavaScript -->
+    &lt;!-- Latest compiled and minified A11Y-labeler JavaScript -->
     &lt;script src="dist/js/A11Y-labeler.min.js">&lt;/script>
-  </pre>
+    </pre>
 
 
-<div id="pageExamples"></div>
+    <div class="row" id="pageExamples">
+
+    </div>
 
 
 </div>
@@ -89,50 +91,74 @@ Licensed under
 
 
 <script type="text/mustache" id="template">
-  {{#dataList}}
-    <h2>{{title}}</h2>
-    <div class="exampleContainer">
-      <div class="example">
-          <p>{{{visbileMarkup}}}</p>
-          <div class="exampleMarkup">{{{exampleMarkup}}}</div>
-      </div>
-      <div class="markup highlight">
-            <pre class="prettyprint"><code class="raw"></code></pre>
-      </div>
-      <div class="exampleResults"></div>
-      <div class="markup highlight">
-            <pre class="prettyprint"><code class="result"></code></pre>
-      </div>
+
+    <div class="col-md-2 col-lg-2 example-links">
+        {{#dataList}}
+            <a href="#link-{{title}}" class="example-link">{{title}}</a>
+        {{/dataList}}
     </div>
-  {{/dataList}}
+    <div class="col-md-10 col-lg-10">
+        {{#dataList}}
+            <h2 id="link-{{title}}">{{title}}</h2>
+            <div class="exampleContainer">
+              <div class="example">
+                  <p>{{{visbileMarkup}}}</p>
+                  <div class="exampleMarkup">{{{exampleMarkup}}}</div>
+              </div>
+              <div class="markup highlight">
+                    <pre class="prettyprint"><code class="raw"></code></pre>
+              </div>
+              <div class="exampleResults">{{{markup}}}</div>
+              <div class="markup highlight">
+                    <pre class="prettyprint"><code class="result"></code></pre>
+              </div>
+            </div>
+        {{/dataList}}
+    </div>
+</script>
+
+<!-- pageExamplesList -->
+
+<script type="text/mustache" id="exampleList">
 </script>
 
 
 <script type="text/javascript">
 
     $(function() {
-      $.getJSON('demodata.json', function(data){
+        $.getJSON('demodata.json', function(data){
 
-          var template = $('#template').html();
-              Mustache.parse(template),
-              output = Mustache.render(template, data);
+                $.each( data.dataList, function( i, val ) {
+            
+                    data.dataList[i]["markup"] = data.dataList[i]["exampleMarkup"].replace( /\n\n/g, "<br />");
 
-          $("#pageExamples").html(output);
+                });
 
-      })
-      .complete(function(){
+                var template = $('#template').html();
+                    Mustache.parse(template),
+                    output = Mustache.render(template, data);
 
-        $(".exampleContainer").each(function(){
-            var $this = $(this),
-                example = $this.find(".exampleMarkup"),
-                raw = $this.find(".raw"),
-                result = $this.find(".result");
-                raw.text(example.prop('innerHTML'))        
-                $this.a11y();
-                result.text(example.prop('innerHTML'));          
+                $("#pageExamples").html(output);
+
+            })
+            .complete(function(){
+
+                $(".exampleContainer").each(function(){
+
+                    var $this = $(this),
+                        example = $this.find(".exampleMarkup"),
+                        raw = $this.find(".raw"),
+                        result = $this.find(".result");
+
+                        raw.text(example.prop('innerHTML'))        
+
+                        $this.a11y();
+
+                        result.text(example.prop('innerHTML'));          
+
+                });
+
         });
-
-    });
 
     });
 
