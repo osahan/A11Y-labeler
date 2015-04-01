@@ -114,6 +114,13 @@ li.L9 {
 .bsextn .view a {
   color: #f5e8ee;
 }
+.bsextn .example-links {
+  padding: 45px 15px 15px;
+}
+.bsextn .example-links .example-link {
+  display: block;
+  padding: 5px 0;
+}
 .bsextn .example,
 .bsextn .exampleResults {
   position: relative;
