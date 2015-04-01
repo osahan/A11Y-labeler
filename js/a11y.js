@@ -13,21 +13,12 @@ a11y.options = {
     label: true
 };
 
-a11y.hiddenElements = [];
-
 a11y.setOptions = function(options){
     options.role = options.role || a11y.options.role;
     options.label = options.label || a11y.options.label;
     return options;
 };
 
-a11y.isHidden = function(ele){
-
-    if( ele.css("display") === "none" ){
-        this.hiddenElements.push(ele);
-    }
-
-};
 
 a11y.keepTrack = function(ele){
 
@@ -42,4 +33,19 @@ a11y.keepTrack = function(ele){
         childList: true,
         characterData: true
     });
+
+    this.checkStates( ele );
+
+};
+
+
+a11y.checkStates = function(ele){
+
+    // disabled
+
+    // hidden
+
+    // checked
+
+
 };
