@@ -30,7 +30,6 @@
 
                             self.keepTrack( $this );
 
-
                          if(typeof role === "undefined"){
                             $this.attr("role", "progressbar");
                          }

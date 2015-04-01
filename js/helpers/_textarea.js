@@ -10,7 +10,6 @@
     a11y._textarea = function(scope, options){
 
         var ele = scope.find("textarea"),
-            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 

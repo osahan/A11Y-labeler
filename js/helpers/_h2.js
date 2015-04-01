@@ -23,7 +23,7 @@
 
                 assignLabels: function(){
 
-                    $.each(ele, function( index, value ) {
+                    $.each(ele, function() {
 
                       var $this = $(this),
                             role = $this.prop("role");

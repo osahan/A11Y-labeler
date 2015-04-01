@@ -10,7 +10,6 @@
     a11y._tbody = function(scope, options){
 
         var ele = scope.find("tbody"),
-            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 

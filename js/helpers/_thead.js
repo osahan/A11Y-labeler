@@ -10,7 +10,6 @@
     a11y._thead = function(scope, options){
 
         var ele = scope.find("thead"),
-            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 

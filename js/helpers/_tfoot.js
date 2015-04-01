@@ -10,7 +10,6 @@
     a11y._tfoot = function(scope, options){
 
         var ele = scope.find("tfoot"),
-            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 

@@ -10,7 +10,6 @@
     a11y._link = function(scope, options){
 
         var ele = scope.find("link"),
-            // regex = /(^#|#$)/,
             self = this,
             labeler = {
 

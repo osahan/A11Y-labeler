@@ -21,7 +21,7 @@
 
                 },
 
-                defineRole: function(){
+                assignLabels: function(){
 
                     $.each(ele, function() {
 

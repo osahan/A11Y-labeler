@@ -10,6 +10,7 @@
     a11y._input = function(scope, options){
 
         var ele = scope.find("input"),
+            self = this,
             labeler = {
 
                 init: function(){
@@ -22,6 +23,7 @@
 
                 assignLabels: function(){
 
+
                     $.each(ele, function(  ) {
 
                         var $this = $(this),
@@ -33,43 +35,42 @@
                             self.keepTrack( $this );
 
                         switch (eleType) {
-                            case button:
+                            case "button":
                                 roleType = "button";
                                 break;
-                            case email:
+                            case "email":
                                 roleType = (listAttr) ? "combobox" : "textbox";
                                 break;
-                            case image:
+                            case "image":
                                 roleType = "button";
                                 break;
-                            case password:
+                            case "password":
                                 roleType = "textbox";
                                 break;
-                            case radio:
+                            case "radio":
                                 roleType = "radio";
                                 break;
-                            case range:
+                            case "range":
                                 roleType = "slider";
                                 break;
-                            case reset:
+                            case "reset":
                                 roleType = "button";
                                 break;
-                            case submit:
+                            case "submit":
                                 roleType = "button";
                                 break;
-                            case tel:
+                            case "tel":
                                 roleType = (listAttr) ? "combobox" : "textbox";
                                 break;
-                            case text:
+                            case "text":
                                 roleType = (listAttr) ? "combobox" : "textbox";
                                 break;
-                            case search:
+                            case "search":
                                 roleType = (listAttr) ? "combobox" : "textbox";
                                 break;
-                            case url:
+                            case "url":
                                 roleType = (listAttr) ? "combobox" : "textbox";
                                 break;
-
 
                         }
 

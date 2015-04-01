@@ -43,26 +43,26 @@
                             $this.attr("role", "presentation");
 
                         }
-                        else if( (eleType === "button" || eleType === "reset" || eleType === "submit" || eleType === "image") && typeof role === "undefined"){
+                        // else if( (eleType === "button" || eleType === "reset" || eleType === "submit" || eleType === "image") && typeof role === "undefined"){
 
-                            $this.attr("role", "button");
+                        //     $this.attr("role", "button");
 
-                        }
-                        else if( ( eleType === "email" || eleType === "password" ) && typeof role === "undefined"){
+                        // }
+                        // else if( ( eleType === "email" || eleType === "password" ) && typeof role === "undefined"){
 
-                            $this.attr("role", "textbox");
+                        //     $this.attr("role", "textbox");
 
-                        }
-                        else if(eleType === "radio" && typeof role === "undefined"){
+                        // }
+                        // else if(eleType === "radio" && typeof role === "undefined"){
 
-                            $this.attr("role", "radio");
+                        //     $this.attr("role", "radio");
 
-                        }
-                        else if(eleType === "range" && typeof role === "undefined"){
+                        // }
+                        // else if(eleType === "range" && typeof role === "undefined"){
 
-                            $this.attr("role", "slider");
+                        //     $this.attr("role", "slider");
 
-                        }
+                        // }
                     });
 
                 }
